@@ -1,0 +1,40 @@
+ul{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  // flex-direction: row;
+  justify-content: space-between;
+}
+ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0 8px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+a{
+  text-decoration: none;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+.active{
+  color: red;
+}
+
+.first{
+  color: green;
+}
+
+.indicator{
+  height: 2px;
+  // width: 2rem;
+  margin-top: 2px ;
+}
