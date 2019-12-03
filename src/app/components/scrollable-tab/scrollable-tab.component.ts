@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 
 
 export interface TopMenu{
+  id:Number,
   title:String,
   link?:String,
 

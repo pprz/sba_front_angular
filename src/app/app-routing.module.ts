@@ -1,20 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent,LoginComponent} from './components';
+import { HomeComponent,LoginComponent,HomeDetailComponent,
+  ImportExcelComponent,
+  ManageCompaniesComponent,
+  ManageIPOComponent,
+  ManageExchangesComponent,
+  UserIpoComponent,
+  CompareCompanyComponent,
+  CompareSectorsComponent,OtherComponent} from './components';
 
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
-  {path:'home',
-  component:HomeComponent,
-  // children:[
-  //     {
-  //     path:'',
-  //     // redirectTo:'/' 
-  //     }
-  //   ]
-  }
+  {path:'home',component:HomeComponent,
+  children:[
+    {path:'',redirectTo:'importExcel',pathMatch:'full'},
+    {path:'importExcel',component:ImportExcelComponent},
+    {path:'manageCompanies',component:ManageCompaniesComponent},
+    {path:'manageExchanges',component:ManageExchangesComponent},
+    {path:'manageIPO',component:ManageIPOComponent},
+    {path:'IPOs',component:UserIpoComponent},
+    {path:'compareCompany',component:CompareCompanyComponent},
+    {path:'compareSectors',component:CompareSectorsComponent},
+    {path:'other',component:OtherComponent},   
+  ]},
 ];
 
 @NgModule({

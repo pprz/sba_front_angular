@@ -1,0 +1,1 @@
+export * from './manage-companies.component'

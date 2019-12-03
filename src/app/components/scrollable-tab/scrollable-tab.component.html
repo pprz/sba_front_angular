@@ -2,7 +2,7 @@
     <!-- let odd=odd;let even=even;index=index;let first=first; -->
     <li *ngFor="let item of menus;let index=index;">
         <!-- [class.active]="index===selectedIndex" -->
-      <a href="#" 
+      <a 
       [ngStyle]="{color:index===selectedIndex?titleActiveColor:titleColor}"
       (click)="handleSelection(index)">{{item.title}}</a>
       <span class="indicator"

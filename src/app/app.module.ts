@@ -4,17 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ScrollableTabComponent,HomeComponent,LoginComponent} from './components';
+import { ScrollableTabComponent,HomeComponent,LoginComponent,
+  ImportExcelComponent,ManageCompaniesComponent,
+  ManageIPOComponent,ManageExchangesComponent,
+  UserIpoComponent,CompareCompanyComponent,CompareSectorsComponent
+  ,HomeDetailComponent,OtherComponent} from './components';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ScrollableTabComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ImportExcelComponent,
+    ManageCompaniesComponent,
+    ManageIPOComponent,
+    ManageExchangesComponent,
+    UserIpoComponent,
+    CompareCompanyComponent,
+    CompareSectorsComponent,
+    HomeDetailComponent,
+    OtherComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
