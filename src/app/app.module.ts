@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { ScrollableTabComponent,HomeComponent,LoginComponent,
-  ImportExcelComponent,ManageCompaniesComponent,
-  ManageIPOComponent,ManageExchangesComponent,
-  UserIpoComponent,CompareCompanyComponent,CompareSectorsComponent
-  ,HomeDetailComponent,OtherComponent} from './components';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ScrollableTabComponent, HomeComponent, LoginComponent,
+  ImportExcelComponent, ManageCompaniesComponent,
+  ManageIPOComponent, ManageExchangesComponent,
+  UserIpoComponent, CompareCompanyComponent, CompareSectorsComponent,
+  HomeDetailComponent, OtherComponent} from './components';
+
+import { FormsModule } from '@angular/forms';
 import { BaseServiceService } from './service';
 import { ParamInterceptor } from './interceptors/params.interceptor';
 
@@ -44,11 +46,12 @@ FusionChartsModule.fcRoot(FusionCharts, Charts)
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     FusionChartsModule // Include in imports
   ],
   providers: [BaseServiceService,
-    {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],
+    { provide: HTTP_INTERCEPTORS, useClass: ParamInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
