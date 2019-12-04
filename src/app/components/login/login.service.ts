@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
+// import { HttpHeaders } from '@angular/common/http';
 import { GlobalService } from '../../service/global.service';
 import { HandleErrorService } from '../../service/handleError.service';
 import { HeaderService } from '../../service/header.service';
 import { catchError, retry } from 'rxjs/operators';
 import { Login } from './login';
-import { LocalURL } from '../../service/global-config';
+import { LocalURL } from '../../config/global-config';
 
 @Injectable({
     providedIn: 'root'
@@ -28,8 +28,6 @@ export class LoginService {
         console.log('findUser() done!');
         console.log('loginUrl', this.loginURL);
         console.log('loginForm', loginForm);
-        console.log('loginForm', loginForm.username);
-        console.log('loginForm', loginForm.password);
         return this.http.post<any>(this.loginURL, loginForm, this.headerService.httpOptions)
             .pipe(
                 retry(1), // retry a failed request up to 1 times
