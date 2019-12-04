@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,17 +14,15 @@ import { ScrollableTabComponent,HomeComponent,LoginComponent,
 import { BaseServiceService } from './service';
 import { ParamInterceptor } from './interceptors/params.interceptor';
 
-// Import angular-fusioncharts
-import { FusionChartsModule } from 'angular-fusioncharts';
-
-// Import FusionCharts library
-import * as FusionCharts from 'fusioncharts';
-
-// Load FusionCharts Individual Charts
-import * as Charts from 'fusioncharts/fusioncharts.charts';
-
-// Use fcRoot function to inject FusionCharts library, and the modules you want to use
-FusionChartsModule.fcRoot(FusionCharts, Charts)
+//Fusion chart start
+import { FusionChartsModule } from "angular-fusioncharts";
+import * as FusionCharts from "fusioncharts";
+import * as Charts from "fusioncharts/fusioncharts.charts";
+import * as Powercharts from 'fusioncharts/fusioncharts.powercharts';
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+//按上面的顺序
+FusionChartsModule.fcRoot(FusionCharts, Charts, Powercharts, FusionTheme);
+//Fusion chart End
 
 @NgModule({
   declarations: [
@@ -44,8 +44,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts)
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FusionChartsModule // Include in imports
+    HttpClientModule,FormsModule, HttpModule, FusionChartsModule
   ],
   providers: [BaseServiceService,
     {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],
