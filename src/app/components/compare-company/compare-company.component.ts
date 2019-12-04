@@ -7,7 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompareCompanyComponent implements OnInit {
 
-  constructor() { }
+  data: Object;
+
+  constructor() {
+    this.data = {
+      chart: { },
+      data: [
+        {value: 500},
+        {value: 600},
+        {value: 700}
+      ]
+    };
+  }
 
   ngOnInit() {
   }

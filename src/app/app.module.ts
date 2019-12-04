@@ -12,6 +12,18 @@ import { ScrollableTabComponent,HomeComponent,LoginComponent,
 import { BaseServiceService } from './service';
 import { ParamInterceptor } from './interceptors/params.interceptor';
 
+// Import angular-fusioncharts
+import { FusionChartsModule } from 'angular-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+
+// Load FusionCharts Individual Charts
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+
+// Use fcRoot function to inject FusionCharts library, and the modules you want to use
+FusionChartsModule.fcRoot(FusionCharts, Charts)
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +42,10 @@ import { ParamInterceptor } from './interceptors/params.interceptor';
   ],
 
   imports: [
-BrowserModule,
+    BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FusionChartsModule // Include in imports
   ],
   providers: [BaseServiceService,
     {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],
