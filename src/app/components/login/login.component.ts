@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   //   username: '',
   //   password: ''
   // };
-  Authresponse = new Authresponse();
   submitted = false;
   pageMessage = '';
 
@@ -26,7 +25,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     // private globalService 时 {{ globalService.pageMessage }} 不识别
-    public globalService: GlobalService
+    public globalService: GlobalService,
+    public authresponse: Authresponse
     // private activateInfo: ActivatedRoute
   ) { }
 
@@ -62,8 +62,11 @@ export class LoginComponent implements OnInit {
     this.globalService.userRole = data.usertype;
     this.globalService.userName = data.username;
 
-    this.Authresponse.name = data.username;
-    this.Authresponse.role = data.usertype;
+    localStorage.setItem('JWT-Token', data.jwtToken);
+
+    this.authresponse.name = data.username;
+    this.authresponse.role = data.usertype;
+    this.authresponse.token = data.jwtToken;
 
     console.log(this.globalService.userId);
     console.log(this.globalService.userRole);

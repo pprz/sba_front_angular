@@ -12,9 +12,9 @@ constructor(private http: HttpClient) {
 }
 
 currUser: Authresponse = {
-  token: 'aaa',
-  name: 'sss',
-  role: 'ddd'
+  token: localStorage.getItem('JWT-Token'),
+  name: '',
+  role: ''
 };
 
 topMenus: TopMenu[] = [

@@ -7,9 +7,9 @@ import { throwError } from 'rxjs';
 })
 export class Authresponse {
 
-  public token: string;
   public name: string;
   public role: string;
+  public token: string;
 
 }
 
