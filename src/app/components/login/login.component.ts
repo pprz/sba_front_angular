@@ -3,6 +3,7 @@ import { Router } from '@angular/router'; // 路由传参用到
 import { Login } from './login';
 import { LoginService } from '../login/login.service';
 import { GlobalService } from '../../service/global.service';
+import { Authresponse } from '../../service/authresponse';
 // import { ActivatedRoute, Params } from '@angular/router'; // 获取路由传参用到
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   //   username: '',
   //   password: ''
   // };
+  Authresponse = new Authresponse();
   submitted = false;
   pageMessage = '';
 
@@ -59,6 +61,10 @@ export class LoginComponent implements OnInit {
     this.globalService.userId = data.id;
     this.globalService.userRole = data.usertype;
     this.globalService.userName = data.username;
+
+    this.Authresponse.name = data.username;
+    this.Authresponse.role = data.usertype;
+
     console.log(this.globalService.userId);
     console.log(this.globalService.userRole);
     if ('ROLE_admin' === data.usertype) {

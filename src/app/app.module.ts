@@ -50,8 +50,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts)
     HttpClientModule,
     FusionChartsModule // Include in imports
   ],
-  providers: [BaseServiceService,
-    { provide: HTTP_INTERCEPTORS, useClass: ParamInterceptor, multi: true }],
+  providers: [
+    BaseServiceService,
+    { provide: HTTP_INTERCEPTORS, useClass: ParamInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
