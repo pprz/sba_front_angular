@@ -1,1 +1,25 @@
-<p>import-excel works!</p>
+<div class="center">
+  <div id="upload" class="form-group" >
+    <label for="importexcel" class="control-label lable">Import Excel</label>
+    <div>
+      <input type="text" [value]="selectFileName" class="form-control col-sm-4" readonly="true"/>
+    </div> 
+    <input type="file" id="file" accept=".xlsx" ng2FileSelect [uploader]="uploader" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" (change)="selectedFileOnChanged($event)" />
+    <input class="btn btn-primary" type="button" value="Browser" (click)="selectFile()"/>
+    <input class="btn btn-primary" type="button" value="Upload" (click)="uploadFile()" [disabled]="btnUploadIsDisabled"/>           
+    <input class="btn btn-primary" type="button" value="Clean" (click)="fileDelete()" [disabled]="btnUploadIsDisabled"/>           
+    <br>
+    <a title="{{title}}"  href="assets/templates/sample_stock_data_template.xlsx " download="sample_stock_data_template.xlsx">
+      <i class="icon-download" ></i><span>{{title}}</span>  
+    </a>
+
+    <div *ngIf="res">
+      <h4>Summary of Upload</h4>
+      <li><span>Company Name: {{companyName}}</span></li>
+      <li><span>Stock Exchange: {{stockExchange}}</span></li>
+      <li><span>No. of Records Imported: {{record}}</span></li>
+      <li><span>From Date: {{fromDate}}</span></li>
+      <li><span>To Date: {{toDate}}</span></li>
+    </div>
+  </div>
+</div>

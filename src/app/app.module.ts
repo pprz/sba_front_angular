@@ -23,7 +23,9 @@ import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 //按上面的顺序
 FusionChartsModule.fcRoot(FusionCharts, Charts, Powercharts, FusionTheme);
 //Fusion chart End
-
+// File upload start
+import { FileUploadModule } from 'ng2-file-upload';
+// File upload end
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Powercharts, FusionTheme);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,FormsModule, HttpModule, FusionChartsModule
+    HttpClientModule,FormsModule, HttpModule, FusionChartsModule, FileUploadModule
   ],
   providers: [BaseServiceService,
     {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],
