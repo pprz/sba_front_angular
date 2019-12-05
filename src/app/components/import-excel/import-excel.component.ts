@@ -52,39 +52,43 @@ export class ImportExcelComponent implements OnInit {
   uploadFile() {
     // 上传
     this.btnUploadIsDisabled = true;
-    this.uploader.queue[0].onSuccess = (response, status, headers) => {
-      // 上传文件成功
-      if (status === 200) {
-        // 上传文件后获取服务器返回的数据
-        console.log('status:' + status);
-        const tempRes = JSON.parse(response);
-        if (tempRes.status === 200) {
-          this.btnUploadIsDisabled = false;
-          alert ('upload successfully!');
+    if (this.selectFileName === 'No file selected') {
+        alert ('Please select a file!');
+    } else {
+      this.uploader.queue[0].onSuccess = (response, status, headers) => {
+        // 上传文件成功
+        if (status === 200) {
+          // 上传文件后获取服务器返回的数据
+          console.log('status:' + status);
+          const tempRes = JSON.parse(response);
+          if (tempRes.status === 200) {
+            this.btnUploadIsDisabled = false;
+            alert ('upload successfully!');
+          } else {
+            this.btnUploadIsDisabled = false;
+            alert (tempRes.msg);
+          }
         } else {
+          // 上传文件后获取服务器返回的数据错误
+          this.isSuccess = false;
           this.btnUploadIsDisabled = false;
-          alert (tempRes.msg);
+          alert ('Network error, please retry!');
         }
-      } else {
-        // 上传文件后获取服务器返回的数据错误
-        this.isSuccess = false;
-        this.btnUploadIsDisabled = false;
-        alert ('Network error, please retry!');
-      }
-    };
+      };
 
-    this.uploader.queue[0].upload(); // 开始上传
+      this.uploader.queue[0].upload(); // 开始上传
 
-    this.uploader.onCompleteItem = ( file, response, header) => {
-      this.res = JSON.parse(response);
-      const resdata = this.res.data;
+      this.uploader.onCompleteItem = ( file, response, header) => {
+        this.res = JSON.parse(response);
+        const resdata = this.res.data;
 
-      this.stockExchange = resdata.stockExchange;
-      this.companyName = resdata.companyName;
-      this.record = resdata.record;
-      this.fromDate = resdata.fromDate;
-      this.toDate = resdata.toDate;
-    };
+        this.stockExchange = resdata.stockExchange;
+        this.companyName = resdata.companyName;
+        this.record = resdata.record;
+        this.fromDate = resdata.fromDate;
+        this.toDate = resdata.toDate;
+      };
+    }
   }
 
 
