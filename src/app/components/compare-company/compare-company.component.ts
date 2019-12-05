@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService } from '../../message.service';
 
-
+const response1 = Object;
 @Component({
   selector: 'app-compare-company',
   templateUrl: './compare-company.component.html',
   styleUrls: ['./compare-company.component.scss']
 })
 export class CompareCompanyComponent implements OnInit {
-  
-  singleData: Object;
-  multiData: Object;
-  singleType: string;
-  multiType: string;
-  constructor() {
+    
+    // public response: any;
+    anyList:Object;
+    singleData: Object;
+    multiData: Object;
+    singleType: string;
+    multiType: string;
+    response1: any;
+  constructor(private http: HttpClient) {
+
     this.singleType = "candlestick";
-    this.multiType = "mscolumn3d";
+    this.multiType = "msspline";
     this.singleData = {
         "chart": {
             "caption": "Daily Stock Price HRYS",
@@ -539,72 +545,114 @@ export class CompareCompanyComponent implements OnInit {
         ]
     };
     this.multiData = {
-      "chart": {
-        "caption": "Harry's SuperMart",
-        "subCaption": "Sales by quarter",
-        "xAxisName": "Quarter",
-        "yAxisName": "Sales (In USD)",
-        "numberPrefix": "$",
-        "theme": "fusion"
-        
-    },
-    "categories": [
-        {
-            "category": [
-                {
-                    "label": "Q1"
-                },
-                {
-                    "label": "Q2"
-                },
-                {
-                    "label": "Q3"
-                },
-                {
-                    "label": "Q4"
-                }
-            ]
-        }
-    ],
-    "dataset": [
-        {
-            "seriesname": "Previous Year",
-            "data": [
-                {
-                    "value": "10000"
-                },
-                {
-                    "value": "11500"
-                },
-                {
-                    "value": "12500"
-                },
-                {
-                    "value": "15000"
-                }
-            ]
+        "chart": {
+            "caption": "Number of visitors last week",
+            "subCaption": "Bakersfield Central vs Los Angeles Topanga",
+            "xAxisName": "Day",
+            "yAxisName": "No. of Visitor",
+            "theme": "fusion"
         },
-        {
-            "seriesname": "Current Year",
-            "data": [
-                {
-                    "value": "25400"
-                },
-                {
-                    "value": "29800"
-                },
-                {
-                    "value": "21800"
-                },
-                {
-                    "value": "26800"
-                }
-            ]
-        }
-    ]
+        "categories": [
+            {
+                "category": [
+                    {
+                        "label": "Mon"
+                    },
+                    {
+                        "label": "Tue"
+                    },
+                    {
+                        "label": "Wed"
+                    // },
+                    // {
+                    //     "vline": "true",
+                    //     "lineposition": "0",
+                    //     "color": "#6baa01",
+                    //     "labelHAlign": "right",
+                    //     "labelPosition": "0",
+                    //     "label": "National holiday"
+                    },
+                    {
+                        "label": "Thu"
+                    },
+                    {
+                        "label": "Fri"
+                    },
+                    {
+                        "label": "Sat"
+                    },
+                    {
+                        "label": "Sun"
+                    }
+                ]
+            }
+        ],
+        "dataset": [
+            {
+                "seriesname": "Bakersfield Central",
+                "data": [
+                    {
+                        "value": "15123"
+                    },
+                    {
+                        "value": "14233"
+                    },
+                    {
+                        "value": "25507"
+                    },
+                    {
+                        "value": "9110"
+                    },
+                    {
+                        "value": "15529"
+                    },
+                    {
+                        "value": "20803"
+                    },
+                    {
+                        "value": "19202"
+                    }
+                ]
+            },
+            {
+                "seriesname": "Los Angeles Topanga",
+                "data": [
+                    {
+                        "value": "13400"
+                    },
+                    {
+                        "value": "12800"
+                    },
+                    {
+                        "value": "22800"
+                    },
+                    {
+                        "value": "12400"
+                    },
+                    {
+                        "value": "15800"
+                    },
+                    {
+                        "value": "19800"
+                    },
+                    {
+                        "value": "21800"
+                    }
+                ]
+            }
+        ]
     }; // end of this.dataSource
   } // end of constructor
   ngOnInit() {
+    this.http.get("http://localhost:8088/getjson").subscribe(res=>{
+        this.setData(res)});
   }
+
+  setData(returnedObj: any){
+    this.anyList = returnedObj;
+    console.log("anyList: ", this.anyList)
+  }
+
+
 
 }
