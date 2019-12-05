@@ -21,6 +21,8 @@ import * as FusionCharts from 'fusioncharts';
 // Load FusionCharts Individual Charts
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 
+import { FileUploadModule } from 'ng2-file-upload';
+
 // Use fcRoot function to inject FusionCharts library, and the modules you want to use
 FusionChartsModule.fcRoot(FusionCharts, Charts)
 
@@ -45,7 +47,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts)
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FusionChartsModule // Include in imports
+    FusionChartsModule, // Include in imports
+    FileUploadModule // upload file
   ],
   providers: [BaseServiceService,
     {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],
