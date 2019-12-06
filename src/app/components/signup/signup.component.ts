@@ -32,7 +32,10 @@ export class SignupComponent implements OnInit {
     console.log('onSubmit() done!');
     this.signupService.addUser(this.signup).subscribe(
       res => {
+        // this.pageMessage = res.msg;
+        // console.log('message', this.pageMessage);
         console.log('message', res.msg);
+        this.globalService.infoMessage = res.msg;
         this.router.navigateByUrl('/login');
       },
       error => this.pageMessage = error

@@ -1,6 +1,9 @@
 <div class="content" role="main">
   <div *ngIf="pageMessage?.length" class="alert alert-danger" role="alert">
-      {{ pageMessage }}
+    {{ pageMessage }}
+  </div>
+  <div *ngIf="globalService.infoMessage?.length" class="alert alert-danger" role="alert">
+    {{ globalService.infoMessage }}
   </div>
   <form class="form-signup" #signupForm="ngForm" (ngSubmit)="onSignup()">
     <h2 class="form-signup-heading">Please sign up</h2>

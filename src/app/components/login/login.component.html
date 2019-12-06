@@ -2,7 +2,10 @@
     <!-- If ngModel is used within a form tag, either the name attribute must be sSigninet
     Example 1: <input [(ngModel)]="person.firstName" name="first"> -->
     <div *ngIf="pageMessage?.length" class="alert alert-danger" role="alert">
-        {{ pageMessage }}
+      {{ pageMessage }}
+    </div>
+    <div *ngIf="globalService.infoMessage?.length" class="alert alert-danger" role="alert">
+      {{ globalService.infoMessage }}
     </div>
     <form class="form-signin" #loginForm="ngForm" (ngSubmit)="onSignin()">
       <h2 class="form-signin-heading">Please sign in</h2>

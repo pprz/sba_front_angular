@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    // private globalService 时 {{ globalService.pageMessage }} 不识别
+    // private globalService: GlobalService, 时 {{ globalService.pageMessage }} 不识别
     public globalService: GlobalService,
     public authresponse: Authresponse
     // private activateInfo: ActivatedRoute
