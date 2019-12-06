@@ -42,7 +42,7 @@ setCurrentUser(authres: Authresponse) {
 }
 
 getSomeData() {
-  return this.http.get('http://localhost:8080/authenticated');
+  return this.http.get('http://localhost:8080/smc/secure/authenticated');
 }
 //  neo end
 
