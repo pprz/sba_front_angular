@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(private router:Router,private service:BaseServiceService) { }
 
   ngOnInit() {
+
+
     console.log(this.service.getTabs())
     this.topMenus=this.service.getTabs()
     this.service.getSomeData().subscribe(res=>{
@@ -22,9 +24,9 @@ export class HomeComponent implements OnInit {
 
 
 
-  topMenus:TopMenu[]=[]    
+  topMenus:TopMenu[]=[]
 hadleTapSelected(topMenu:TopMenu){
 this.router.navigate(['home',topMenu.link])
-}   
+}
 
 }
