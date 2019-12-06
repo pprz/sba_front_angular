@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Signup } from './signup';
+import { SignupService } from '../signup/signup.service';
+import { GlobalService } from '../../service/global.service';
+import { Authresponse } from '../../service/authresponse';
+
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
+})
+
+export class SignupComponent implements OnInit {
+
+  signup = new Signup();
+  submitted = false;
+  pageMessage = '';
+
+  constructor(
+    private router: Router,
+    private signupService: SignupService,
+    public globalService: GlobalService,
+    public authresponse: Authresponse
+  ) { }
+
+  ngOnInit() {
+  }
+
+  onSignup() {
+    this.submitted = true;
+    console.log('onSubmit() done!');
+    this.signupService.addUser(this.signup).subscribe(
+      res => {
+        console.log('message', res.msg);
+        this.router.navigateByUrl('/login');
+      },
+      error => this.pageMessage = error
+    );
+  }
+
+}
+

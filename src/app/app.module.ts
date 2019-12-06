@@ -4,11 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ScrollableTabComponent, HomeComponent, LoginComponent,
-  ImportExcelComponent, ManageCompaniesComponent,
-  ManageIPOComponent, ManageExchangesComponent,
-  UserIpoComponent, CompareCompanyComponent, CompareSectorsComponent,
-  HomeDetailComponent, OtherComponent} from './components';
+import {
+  ScrollableTabComponent,
+  HomeComponent,
+  LoginComponent,
+  SignupComponent,
+  ImportExcelComponent,
+  ManageCompaniesComponent,
+  ManageIPOComponent,
+  ManageExchangesComponent,
+  UserIpoComponent,
+  CompareCompanyComponent,
+  CompareSectorsComponent,
+  HomeDetailComponent,
+  OtherComponent
+} from './components';
 
 import { FormsModule } from '@angular/forms';
 import { BaseServiceService } from './service';
@@ -32,6 +42,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts)
     ScrollableTabComponent,
     HomeComponent,
     LoginComponent,
+    SignupComponent,
     ImportExcelComponent,
     ManageCompaniesComponent,
     ManageIPOComponent,

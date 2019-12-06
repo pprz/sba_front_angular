@@ -11,6 +11,7 @@ import { Authresponse } from '../../service/authresponse';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   login = new Login();

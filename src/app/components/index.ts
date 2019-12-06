@@ -1,6 +1,7 @@
 export * from './scrollable-tab';
 export * from './home';
 export * from './login';
+export * from './signup';
 export * from './compare-company';
 export * from './compare-sectors';
 export * from './import-excel';
