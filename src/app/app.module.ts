@@ -28,7 +28,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 // File upload end
 // 模拟数据服务器 start
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './components/manage-exchanges/in-memory-data.service';
+// import { InMemoryDataService } from './components/manage-exchanges/in-memory-data.service';
 // 模拟数据服务器 end
 @NgModule({
   declarations: [
@@ -54,9 +54,9 @@ import { InMemoryDataService } from './components/manage-exchanges/in-memory-dat
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
   providers: [BaseServiceService,
     {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],

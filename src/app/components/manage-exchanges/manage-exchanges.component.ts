@@ -8,16 +8,30 @@ import { ExchangesService } from './exchanges.service';
 })
 export class ManageExchangesComponent implements OnInit {
   exchanges: Exchange[];
-
+  errMsg: any;
   constructor(private exchangesService: ExchangesService) { }
 
   ngOnInit() {
     this.getExchanges();
   }
 
-  getExchanges(): void {
+  getExchanges() {
     this.exchangesService.getExchanges()
-    .subscribe(exchanges => this.exchanges = exchanges);
+    .subscribe(
+      res => {
+        if (res.status === 200) {
+          console.log('response', res);
+          this.exchanges = res.data;
+        } else {
+          alert (res.msg);
+        }
+      },
+      error => this.errMsg = error
+      // exchanges => {
+      //   console.log('response', exchanges);
+      //   this.exchanges = exchanges;
+      // }
+      );
   }
 
 }

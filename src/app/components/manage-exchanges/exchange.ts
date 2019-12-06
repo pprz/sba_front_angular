@@ -1,7 +1,7 @@
 export class Exchange {
   exchangeid: number;
-  stockexchange: string;
-  exbrief: string;
+  stockExchange: string;
+  brief: string;
   address: string;
-  exremarks: string;
+  remarks: string;
 }
