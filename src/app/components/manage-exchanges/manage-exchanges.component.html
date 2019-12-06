@@ -1,1 +1,26 @@
-<p>manage-exchanges works!</p>
+<input class="btn btn-primary btn-add" type="button" value="Add"/>
+
+<div class="content" role="main">
+  <table datatable class="table"  style="border:1px solid #f3f3f3">
+    <thead>
+      <tr>
+        <th>Exchange ID</th>
+        <th>Stock Change</th>
+        <th>Brief</th>
+        <th>Contact Address</th>
+        <th>Remarks</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exchange of exchanges"   >
+        <td>{{exchange.exchangeid}}</td>
+        <td>{{exchange.stockexchange}}</td>
+        <td>{{exchange.exbrief}}</td>
+        <td>{{exchange.address}}</td>
+        <td>{{exchange.exremarks}}</td>
+        <td><input class="btn btn-info" type="button" value="Edit"/></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
