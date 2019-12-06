@@ -19,7 +19,8 @@ import { HandleErrorService } from '../../service/handleError.service';
 })
 export class ExchangesService {
   // readonly exchangesUrl = LocalURL.serverURL + 'exchange';
-  readonly exchangesUrl = 'http://localhost:8081/search/exchange';
+  readonly allexchangesUrl = 'http://localhost:8081/search/exchange';
+  readonly exchangesUrl = 'http://localhost:8082/exchange';
   // private exchangesUrl = 'api/exchange';  // URL to web api
   constructor(
     private http: HttpClient,
@@ -32,13 +33,24 @@ export class ExchangesService {
   //   return this.http.get<Exchange[]>(this.exchangesUrl) // memory测试用
   getExchanges(): Observable<any> {
     console.log ('getExchanges success!');
-    console.log ('exchangesUrl', this.exchangesUrl);
-    return this.http.get<any>(this.exchangesUrl)
+    console.log ('exchangesUrl', this.allexchangesUrl);
+    return this.http.get<any>(this.allexchangesUrl)
       .pipe(
         retry(1), // retry a failed request up to 1 times
         catchError(this.handleErrorService.handleError)
         // catchError(this.handleError<Exchange[]>('getExchanges', [])) // memory测试用
       );
+  }
+
+  addExchange(Addexchange: Exchange): Observable<any> {
+    console.log('addExchange() done!');
+    console.log('loginUrl', this.exchangesUrl);
+    console.log('AddParam', Addexchange);
+    return this.http.post<any>(this.exchangesUrl, Addexchange)
+            .pipe(
+                retry(1), // retry a failed request up to 1 times
+                catchError(this.handleErrorService.handleError)
+            );
   }
 
   /**

@@ -9,6 +9,7 @@ import { ExchangesService } from './exchanges.service';
 export class ManageExchangesComponent implements OnInit {
   exchanges: Exchange[];
   errMsg: any;
+  exchange = new Exchange();
   constructor(private exchangesService: ExchangesService) { }
 
   ngOnInit() {
@@ -32,6 +33,24 @@ export class ManageExchangesComponent implements OnInit {
       //   this.exchanges = exchanges;
       // }
       );
+  }
+
+  add() {
+    console.log('this.exchange', this.exchange);
+    this.exchangesService.addExchange(this.exchange)
+    .subscribe(
+      res => {
+        if (res.status === 200) {
+          console.log('response', res);
+          // this.exchanges = res.data;
+          this.exchanges.push();
+          alert (res.msg);
+        } else {
+          alert (res.msg);
+        }
+      },
+      error => this.errMsg = error
+    );
   }
 
 }
