@@ -10,6 +10,8 @@ export class ManageExchangesComponent implements OnInit {
   exchanges: Exchange[];
   errMsg: any;
   exchange = new Exchange();
+  stockExchange: string;
+  exchangeForm = new Exchange();
   constructor(private exchangesService: ExchangesService) { }
 
   ngOnInit() {
@@ -43,8 +45,28 @@ export class ManageExchangesComponent implements OnInit {
         if (res.status === 200) {
           console.log('response', res);
           // this.exchanges = res.data;
-          this.exchanges.push();
+          // this.exchanges.push();
+          this.exchanges.push(this.exchange);
           alert (res.msg);
+          this.getExchanges();
+          this.exchange = new Exchange();
+        } else {
+          alert (res.msg);
+          this.getExchanges();
+          this.exchange = new Exchange();
+        }
+      },
+      error => this.errMsg = error
+    );
+  }
+
+  currentExchange(i: number) {
+    this.exchangesService.getCurrentExchange(this.exchanges[i].stockExchange)
+    .subscribe(
+      res => {
+        if (res.status === 200) {
+          console.log('response', res);
+          this.exchangeForm = res.data;
         } else {
           alert (res.msg);
         }
@@ -53,4 +75,27 @@ export class ManageExchangesComponent implements OnInit {
     );
   }
 
+  update() {
+    // id = this.exchange.exchangeid;
+    // console.log(typeof(i), i);
+    // console.log('this.exchangeForm', this.exchangeForm); // undefined
+    this.exchangesService.updateExchange(this.exchangeForm)
+    .subscribe(
+      res => {
+        if (res.status === 200) {
+          console.log('response', res);
+          console.log('slice', this.exchanges.slice(this.exchangeForm.exchangeid));
+          // this.exchangeForm.splice(this.exchangeForm.exchangeid , 1, this.exchangeForm);
+          alert (res.msg);
+          this.getExchanges();
+          this.exchangeForm = new Exchange();
+        } else {
+          alert (res.msg);
+          this.getExchanges();
+          this.exchangeForm = new Exchange();
+        }
+      },
+      error => this.errMsg = error
+    );
+  }
 }

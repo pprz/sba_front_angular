@@ -8,6 +8,7 @@ import {Exchange} from './exchange';
 import { MsgService } from './msg.service';
 import { LocalURL } from '../../config/global-config';
 import { HandleErrorService } from '../../service/handleError.service';
+import { url } from 'inspector';
 // import { GlobalService } from '../../service/global.service';
 
 // const httpOptions = {
@@ -32,7 +33,7 @@ export class ExchangesService {
   // getExchanges(): Observable<Exchange[]> { // memory测试用
   //   return this.http.get<Exchange[]>(this.exchangesUrl) // memory测试用
   getExchanges(): Observable<any> {
-    console.log ('getExchanges success!');
+    // console.log ('getExchanges success!');
     console.log ('exchangesUrl', this.allexchangesUrl);
     return this.http.get<any>(this.allexchangesUrl)
       .pipe(
@@ -44,14 +45,34 @@ export class ExchangesService {
 
   addExchange(Addexchange: Exchange): Observable<any> {
     console.log('addExchange() done!');
-    console.log('loginUrl', this.exchangesUrl);
-    console.log('AddParam', Addexchange);
+    console.log('addexchangesUrl', this.exchangesUrl);
+    console.log('Addexchange', Addexchange);
     return this.http.post<any>(this.exchangesUrl, Addexchange)
             .pipe(
                 retry(1), // retry a failed request up to 1 times
                 catchError(this.handleErrorService.handleError)
             );
   }
+
+  getCurrentExchange(stockExchange: string): Observable<any> {
+    console.log('getCurrentExchange URL', `${this.allexchangesUrl}/${stockExchange}`);
+    return this.http.get<any>(`${this.allexchangesUrl}/${stockExchange}`)
+      .pipe(
+        retry(1), // retry a failed request up to 1 times
+        catchError(this.handleErrorService.handleError)
+      );
+  }
+  updateExchange(Updateexchange: Exchange): Observable<any> {
+    console.log('updateExchange() done!');
+    console.log('updateexchangesUrl', this.exchangesUrl);
+    console.log('Updateexchange', Updateexchange);
+    return this.http.put(this.exchangesUrl, Updateexchange)
+            .pipe(
+                retry(1), // retry a failed request up to 1 times
+                catchError(this.handleErrorService.handleError)
+            );
+  }
+
 
   /**
    * Handle Http operation that failed.
