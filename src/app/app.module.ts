@@ -37,6 +37,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Powercharts, FusionTheme);
 // File upload start
 import { FileUploadModule } from 'ng2-file-upload';
 // File upload end
+// 模拟数据服务器 start
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService } from './components/manage-exchanges/in-memory-data.service';
+// 模拟数据服务器 end
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +64,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    HttpModule,
+    // HttpModule,
     FusionChartsModule,
     FileUploadModule
   ],

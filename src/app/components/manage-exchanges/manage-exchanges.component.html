@@ -1,1 +1,113 @@
-<p>manage-exchanges works!</p>
+<!-- Add Exchange start  -->
+<input class="btn btn-primary btn-add" type="button" value="Add" data-toggle="modal" data-target="#add-btn"/>
+<div class="modal fade" id="add-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <form class="form-addexchange" #AddExgForm="ngForm" (ngSubmit)="addExchange()"> -->
+    <form class="form-addexchange">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Add a new exchange</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <span><label for="stockExchange">Stock Exchange</label>
+                <!-- <input type="text" class="form-control" id="stockExchange" name="stockExchange" [(ngModel)]="exchanges.stockExchange" #stockExchange="ngModel" > -->
+                <input type="text" class="form-control" id="stockExchange" name="stockexchange" [(ngModel)]="exchange.stockExchange" #stockExchange="ngModel"></span>
+            </div>
+            <div class="form-group">
+                <span><label for="brief">Brief</label>
+                <input type="text" class="form-control" id="brief" name="brief" [(ngModel)]="exchange.brief" #brief="ngModel"></span>
+            </div>
+            <div class="form-group">
+                <span><label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="exchange.address" #address="ngModel"></span>
+            </div>
+            <div class="form-group">
+                <span><label for="remarks">Remarks</label>
+                <input type="text" class="form-control" id="remarks" name="remarks" [(ngModel)]="exchange.remarks" #remarks="ngModel"></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel" />
+          <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="add()" value="Submit"/>          
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Add Exchange end  -->
+<!--All Exchanges Table Start-->
+<div class="content" role="main">
+  <table datatable class="table"  style="border:1px solid #f3f3f3">
+    <thead>
+      <tr>
+        <!-- <th>Index</th> -->
+        <th>Exchange ID</th>
+        <th>Stock Change</th>
+        <th>Brief</th>
+        <th>Contact Address</th>
+        <th>Remarks</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exchange of exchanges; let i = index" [attr.data-index]="i">
+      <!-- <tr *ngFor="let exchange of exchanges; let i=index"> -->
+        <!-- <td>{{i}}</td> -->
+        <td>{{exchange.exchangeid}}</td>
+        <td>{{exchange.stockExchange}}</td>
+        <td>{{exchange.brief}}</td>
+        <td>{{exchange.address}}</td>
+        <td>{{exchange.remarks}}</td>
+        <td><input class="btn btn-info" type="button" value="Edit" data-toggle="modal" data-target="#update-btn" (click)="currentExchange(i)" />
+        </td>
+        <!--Edit Excahnge start-->
+        <div class="modal fade" id="update-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form class="form-editexchange">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Update an exchange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <span><label for="ExchangeID">Exchange ID</label>
+                        <input type="text" class="form-control" id="ExchangeID" name="exchangeid" [(ngModel)]="exchangeForm.exchangeid" #ExchangeID="ngModel" readonly></span>
+                      </div>
+                    <div class="form-group">
+                        <span><label for="stockExchange">Stock Exchange</label>
+                        <input type="text" class="form-control" id="updatestockExchange" name="updatestockExchange" [(ngModel)]="exchangeForm.stockExchange" #updatestockExchange="ngModel"></span>
+                      </div>
+                    <div class="form-group">
+                        <span><label for="brief">Brief</label>
+                        <input type="text" class="form-control" id="updatebrief" name="updatebrief" [(ngModel)]="exchangeForm.brief" #updatestockExchange="ngModel"></span>
+                      </div>
+                    <div class="form-group">
+                        <span><label for="address">Address</label>
+                          <input type="text" class="form-control" id="updateaddress" name="updateaddress" [(ngModel)]="exchangeForm.address" #updatestockExchange="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                        <span><label for="remarks">Remarks</label>
+                        <input type="text" class="form-control" id="updateremarks" name="updateremarks" [(ngModel)]="exchangeForm.remarks" #updatestockExchange="ngModel"></span>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel"/>
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="update(i)" value="Submit"/>          
+                </div>
+              </div>
+            </div>
+          </form>
+        </div> 
+      <!--Edit Excahnge End-->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--All Exchanges Table End-->
