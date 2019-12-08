@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   // };
   submitted = false;
   pageMessage = '';
+  // authresponse = new Authresponse();
 
   constructor(
     private router: Router,

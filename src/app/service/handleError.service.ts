@@ -15,14 +15,14 @@ export interface Config {
 })
 export class HandleErrorService {
 
-    configUrl = 'dsfsd/fsdfsdf/fsdfsd';
+    // configUrl = 'dsfsd/fsdfsdf/fsdfsd';
 
     constructor(private http: HttpClient) { }
 
-    getConfigResponse(): Observable<HttpResponse<Config>> {
-      return this.http.get<Config>(
-        this.configUrl, { observe: 'response' });
-    }
+    // getConfigResponse(): Observable<HttpResponse<Config>> {
+    //   return this.http.get<Config>(
+    //     this.configUrl, { observe: 'response' });
+    // }
 
     public handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
@@ -40,11 +40,11 @@ export class HandleErrorService {
           'Something bad happened; please try again later.');
     }
 
-    makeIntentionalError() {
-      return this.http.get('not/a/real/url')
-        .pipe(
-          catchError(this.handleError)
-        );
-    }
+    // makeIntentionalError() {
+    //   return this.http.get('not/a/real/url')
+    //     .pipe(
+    //       catchError(this.handleError)
+    //     );
+    // }
 
 }
