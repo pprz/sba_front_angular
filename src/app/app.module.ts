@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,15 +25,15 @@ import { FormsModule } from '@angular/forms';
 import { BaseServiceService } from './service';
 import { ParamInterceptor } from './interceptors/params.interceptor';
 
-//Fusion chart start
-import { FusionChartsModule } from "angular-fusioncharts";
-import * as FusionCharts from "fusioncharts";
-import * as Charts from "fusioncharts/fusioncharts.charts";
+// Fusion chart start
+import { FusionChartsModule } from 'angular-fusioncharts';
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as Powercharts from 'fusioncharts/fusioncharts.powercharts';
-import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-//按上面的顺序
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+// 按上面的顺序
 FusionChartsModule.fcRoot(FusionCharts, Charts, Powercharts, FusionTheme);
-//Fusion chart End
+// Fusion chart End
 // File upload start
 import { FileUploadModule } from 'ng2-file-upload';
 // File upload end
