@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './compare-sectors.component.html',
   styleUrls: ['./compare-sectors.component.scss']
 })
+
 export class CompareSectorsComponent implements OnInit {
 
   constructor() { }

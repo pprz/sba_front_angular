@@ -8,23 +8,22 @@ import { BaseServiceService } from 'src/app/service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
-  constructor(private router:Router,private service:BaseServiceService) { }
+  constructor(private router: Router, private service: BaseServiceService) { }
+
+  topMenus: TopMenu [] = [];
 
   ngOnInit() {
-    console.log(this.service.getTabs())
-    this.topMenus=this.service.getTabs()
-    this.service.getSomeData().subscribe(res=>{
-      console.log('res',res)
-    })
+    console.log(this.service.getTabs());
+    this.topMenus = this.service.getTabs();
+    this.service.getSomeData().subscribe(res => {
+      console.log('res', res);
+    });
   }
-
-
-
-  topMenus:TopMenu[]=[]    
-hadleTapSelected(topMenu:TopMenu){
-this.router.navigate(['home',topMenu.link])
-}   
+  hadleTapSelected(topMenu: TopMenu) {
+    this.router.navigate(['home', topMenu.link]);
+  }
 
 }

@@ -5,12 +5,24 @@ import { HttpModule } from "@angular/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { ScrollableTabComponent,HomeComponent,LoginComponent,
-  ImportExcelComponent,ManageCompaniesComponent,
-  ManageIPOComponent,ManageExchangesComponent,
-  UserIpoComponent,CompareCompanyComponent,CompareSectorsComponent
-  ,HomeDetailComponent,OtherComponent} from './components';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  ScrollableTabComponent,
+  HomeComponent,
+  LoginComponent,
+  SignupComponent,
+  ImportExcelComponent,
+  ManageCompaniesComponent,
+  ManageIPOComponent,
+  ManageExchangesComponent,
+  UserIpoComponent,
+  CompareCompanyComponent,
+  CompareSectorsComponent,
+  HomeDetailComponent,
+  OtherComponent
+} from './components';
+
+import { FormsModule } from '@angular/forms';
 import { BaseServiceService } from './service';
 import { ParamInterceptor } from './interceptors/params.interceptor';
 
@@ -32,6 +44,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     ScrollableTabComponent,
     HomeComponent,
     LoginComponent,
+    SignupComponent,
     ImportExcelComponent,
     ManageCompaniesComponent,
     ManageIPOComponent,
@@ -46,10 +59,16 @@ import { FileUploadModule } from 'ng2-file-upload';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,FormsModule, HttpModule, FusionChartsModule, FileUploadModule
+    HttpClientModule,
+    FormsModule,
+    HttpModule,
+    FusionChartsModule,
+    FileUploadModule
   ],
-  providers: [BaseServiceService,
-    {provide:HTTP_INTERCEPTORS,useClass:ParamInterceptor,multi:true}],
+  providers: [
+    BaseServiceService,
+    { provide: HTTP_INTERCEPTORS, useClass: ParamInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
