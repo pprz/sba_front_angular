@@ -9,11 +9,12 @@ export class ParamInterceptor implements HttpInterceptor {
   constructor(private service: BaseServiceService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const user: Authresponse = this.service.getCurrentUser();
-    const token = user.token;
+    // const user: Authresponse = this.service.getCurrentUser();
+    // const token = user.token;
     const modifiedReq = req.clone({
       setHeaders: {
-        token: token.toString()
+        // token: token.toString()
+        'JWT-Tonken': 'Shazi ' + localStorage.getItem('JWT-Token')
       }
     });
     return next.handle(modifiedReq);
