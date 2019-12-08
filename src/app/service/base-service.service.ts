@@ -12,7 +12,8 @@ constructor(private http: HttpClient) {
 }
 
 currUser: Authresponse = {
-  token: localStorage.getItem('JWT-Token'),
+  // token: localStorage.getItem('JWT-Token'),
+  token: '',
   name: '',
   role: ''
 };
