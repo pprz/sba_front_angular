@@ -13,7 +13,9 @@ import { MessageService } from './message.service';
 })
 export class CompanyServiceService {
   readonly allcompaniesUrl = 'http://localhost:8080/search/company';
-  // readonly testcompaniesUrl = 'http://localhost:8089/company';
+  readonly newcompanyUrl = 'http://localhost:8080/company/newCompany';
+  readonly updatecompanyUrl = 'http://localhost:8080/company/updateCompany';
+  readonly currentcompanyUrl = 'http://localhost:8080/search/company';
 
   constructor(
     private http: HttpClient,
@@ -21,7 +23,7 @@ export class CompanyServiceService {
     public handleErrorService: HandleErrorService
   ) { }
 
-  /* GET exchanges from the server */
+  /* GET Companys from the server */
   // getCompanies(): Observable<Company[]> { // memory测试用
   //    return this.http.get<Company[]>(this.allcompaniesUrl) // memory测试用
   // }
@@ -36,6 +38,38 @@ export class CompanyServiceService {
         catchError(this.handleError<any>('getCompanies'))
       );
   }
+  addCompany(company: Company): Observable<any> {
+    console.log('addCompany() done!');
+    console.log('addCompanysUrl', this.newcompanyUrl);
+    console.log('AddCompany', company);
+    return this.http.post<any>(this.newcompanyUrl, company)
+            .pipe(
+                retry(1), // retry a failed request up to 1 times
+                tap(_ => this.log('add new company(tap)')),
+                catchError(this.handleError<any>('addCompany'))
+            );
+  }
+  getCurrentCompany(companyid: number ): Observable<any> {
+    console.log('getCurrentExchange URL', `${this.currentcompanyUrl}/${companyid}`);
+    return this.http.get<any>(`${this.currentcompanyUrl}/${companyid}`)
+      .pipe(
+        retry(1), // retry a failed request up to 1 times
+        tap(_ => this.log('get current company(tap)')),
+        catchError(this.handleError<any>('getCurrentCompany'))
+      );
+  }
+
+  updateCompany(updatedCompany: Company): Observable<any> {
+    console.log('updateCompany() done!');
+    console.log('updatecompanyUrl', this.updatecompanyUrl);
+    console.log('updateCompany', updatedCompany);
+    return this.http.put(this.updatecompanyUrl, updatedCompany)
+            .pipe(
+                retry(1), // retry a failed request up to 1 times
+                catchError(this.handleErrorService.handleError)
+            );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
