@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log(this.service.getTabs());
     this.topMenus = this.service.getTabs();
+    // use to test token, remove before MTP
     // this.service.getSomeData().subscribe(res => {
     //   console.log('res', res);
     // });

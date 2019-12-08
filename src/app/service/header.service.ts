@@ -9,7 +9,8 @@ export class HeaderService {
     public httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
-          'Authorization': 'my-auth-token'
+          // 自己加着玩
+          'JWT-Token': 'aabbcc'
         })
       };
 
