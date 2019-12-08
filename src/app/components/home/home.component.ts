@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log(this.service.getTabs());
     this.topMenus = this.service.getTabs();
-    this.service.getSomeData().subscribe(res => {
-      console.log('res', res);
-    });
+    // this.service.getSomeData().subscribe(res => {
+    //   console.log('res', res);
+    // });
   }
   hadleTapSelected(topMenu: TopMenu) {
     this.router.navigate(['home', topMenu.link]);
