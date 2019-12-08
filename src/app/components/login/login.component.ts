@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     // this.login.username = 'Liker';
     // this.login.password = '111111';
     // console.log('username::', this.login.username, 'pw::', this.login.password);
+    this.pageMessage = '';
   }
 
   onSignin() {

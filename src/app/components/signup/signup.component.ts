@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pageMessage = '';
   }
 
   onSignup() {
@@ -36,9 +37,15 @@ export class SignupComponent implements OnInit {
         // console.log('message', this.pageMessage);
         console.log('message', res.msg);
         this.globalService.infoMessage = res.msg;
-        this.router.navigateByUrl('/login');
+        if (res.status === 200) {
+          this.router.navigateByUrl('/login');
+        } else {
+          this.router.navigateByUrl('/signup');
+        }
       },
-      error => this.pageMessage = error
+      error => {
+        this.pageMessage = error;
+      }
     );
   }
 
