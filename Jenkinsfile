@@ -35,7 +35,7 @@ pipeline {
           sh 'docker login -u $USERNAME -p $PASSWORD'
           sh 'docker image build -t ${DOCKERHUBNAME}/smcauth .'
           sh 'docker push ${DOCKERHUBNAME}/smcauth'
-          sh 'docker run -d -p 4200:4200 --network smc-net --name smceureka ${DOCKERHUBNAME}/smcauth'
+          sh 'docker run -d -p 4200:4200 --network smc-net --name smcfe ${DOCKERHUBNAME}/smcauth'
         }
       }
     }
