@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     this.globalService.userName = data.username;
 
     localStorage.setItem('JWT-Token', data.jwtToken);
-
+    localStorage.setItem('currUser', data);
     this.authresponse.name = data.username;
     this.authresponse.role = data.usertype;
     this.authresponse.token = data.jwtToken;
