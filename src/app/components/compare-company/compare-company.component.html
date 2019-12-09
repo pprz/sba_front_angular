@@ -4,105 +4,106 @@
             <h1>Compare Company</h1>
         </div>
         <div class="row">
-            <div class="col-md-3 offset-md-3"><span style="font-size: large;">Select Company/Sector:</span>&nbsp;</div>
-            <div class="col-md-3">
-                <div class="dropdown" >
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
-                        Company
-                    </button>
-                    <div class="dropdown-menu" style="width: 100%;">
-                        <a class="dropdown-item" href="javascript:;">Company</a>
-                        <a class="dropdown-item" href="javascript:;">Sector</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3 offset-md-3"><span style="font-size: large;">Select Stock Exchange:</span>&nbsp;&nbsp;</div>
-            <div class="col-md-3">
-                <div class="dropdown">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
-                        BSE
-                    </button>
-                    <div class="dropdown-menu" style="width: 100%;">
-                        <a class="dropdown-item" href="javascript:;">BSE</a>
-                        <a class="dropdown-item" href="javascript:;">NSE</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3 offset-md-3"><span style="font-size:large">From Peroid:</span></div>
-            <div class="col-md-3">
-                
-                <!--指定 date标记-->
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-               
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 offset-md-3"><span style="font-size:large">To Peroid:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Company/Sector:</span>&nbsp;</div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <div class='input-group date' id='datetimepicker2'>
-                        <input type='text' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-        
+                    <select class="form-control" id="companysector">
+                        <option>Company</option>
+                        <option>Sector</option>
+                    </select>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-3 offset-md-3"><span style="font-size:large">Specify Periodicity:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Stock Exchange:</span>&nbsp;&nbsp;</div>
             <div class="col-md-3">
-                <div class="dropdown">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
-                        Dropdown button
-                    </button>
-                    <div class="dropdown-menu" style="width: 100%;">
-                        <a class="dropdown-item" href="javascript:;">Last 30 days</a>
-                        <a class="dropdown-item" href="javascript:;">Last 60 days</a>
-                        <a class="dropdown-item" href="javascript:;">Last 90 days</a>
-                        <a class="dropdown-item" href="javascript:;">Last 6 months</a>
+                <select class="form-control" id="exchange">
+                    <option>BSE</option>
+                    <option>NSE</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 1%;">
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Company Name:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="" placeholder="Company name">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-folder-open">
+                            </span>
+                        </span>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">From Peroid:</span></div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="" placeholder="YYYY-mm-dd hh:mm:ss">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">To Peroid:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="" placeholder="YYYY-mm-dd hh:mm:ss">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Specify Periodicity&nbsp;(days):</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3">
+                
+                
+                <input type="range" class="custom-range" min="1" max="120" step="1" id="customRange3" [(ngModel)]="rangeValue" style="width: 100%;">
+                <div style="float: left;">
+                    last&nbsp;<span id="rangevalue" style="font-style: oblique; font-weight: 700;">{{rangeValue}}</span> days
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-9">
+                <button type="button" class="btn btn-danger" style="width: 25%;">Add</button>
             </div>
         </div>
 
         <div class="row" style="padding-top: 2%;">
-            <div class="col-md-3 offset-md-5">
+            <div class="col-md-3 col-md-offset-5">
                 <button type="button" class="btn btn-warning" style="width: 100%;">Generate Map</button>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6 offset-md-3" style="height: 400px;">
-                <fusioncharts
-                width="700"
-                height="400"
-                [type]="singleType"
-                [dataSource]="singleData"
-              >
-              </fusioncharts>
+            <div class="col-md-6 col-md-offset-3" style="height: 400px;">
+
               <fusioncharts
                 width="700"
                 height="400"
-                [type]="multiType"
-                [dataSource]="multiData"
+                [type]="companySinglePriceType"
+                [dataSource]="companySinglePriceFusion"
               >
               </fusioncharts>
             </div>
-            <span>{{anyList.heroesUrl}}</span>
+            <!-- <span>{{anyList.heroesUrl}}</span> -->
         </div>
+
+        
     </div>
-    
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
