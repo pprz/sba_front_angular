@@ -15,7 +15,7 @@ pipeline {
         echo 'start npm install...'
         sh 'npm install'
         echo 'start npm build...'
-        sh 'npm run-script build'
+        sh 'npm run build'
         echo 'npm install and build successfully!'
       }
     }
