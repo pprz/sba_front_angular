@@ -1,1 +1,182 @@
-<p>manage-companies works!</p>
+<div class="content" role="main">
+  <div class="row align-items-center justify-content-center">
+    <h2><strong>COMPANY MANAGEMENT</strong></h2>
+  </div>
+
+  <input class="btn btn-primary btn-add" type="button" value="Add" data-toggle="modal" data-target="#add-btn"/>
+  <div class="modal fade" id="add-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <form class="form-addcompany">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">Add a new company</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <span><label for="companyCode">Company Code</label>
+                  <input type="text" class="form-control" id="companyCode" name="companyCode" [(ngModel)]="company.companyCode" #companyCode="ngModel"></span>
+              </div>
+              <div class="form-group">
+                  <span><label for="companyName">Comany Name</label>
+                  <input type="text" class="form-control" id="companyName" name="companyName" [(ngModel)]="company.companyName" #companyName="ngModel"></span>
+              </div>
+              <div class="form-group">
+                  <span><label for="turnover">Turnover($)</label>
+                  <input type="text" class="form-control" id="turnover" name="turnover" [(ngModel)]="company.turnover" #turnover="ngModel"></span>
+              </div>
+              <div class="form-group">
+                  <span><label for="ceo">CEO</label>
+                  <input type="text" class="form-control" id="ceo" name="ceo" [(ngModel)]="company.ceo" #ceo="ngModel"></span>
+              </div>
+              <div class="form-group">
+                <span><label for="boardofdirectors">Board Of Directors</label>
+                <input type="text" class="form-control" id="boardofdirectors" name="boardofdirectors" [(ngModel)]="company.boardofdirectors" #boardofdirectors="ngModel"></span>
+            </div>
+            <div class="form-group">
+              <span><label for="listedinskex">Listed in Stock Exchange</label>
+              <input type="text" class="form-control" id="listedinskex" name="listedinskex" [(ngModel)]="company.listedinskex" #listedinskex="ngModel"></span>
+          </div>
+          <div class="form-group">
+            <span><label for="sectorName">Sector Name</label>
+            <input type="text" class="form-control" id="sectorName" name="sectorName" [(ngModel)]="company.sectorName" #sectorName="ngModel"></span>
+        </div>
+        <div class="form-group">
+          <span><label for="brifewriteup">Brife Writeup</label>
+          <input type="text" class="form-control" id="brifewriteup" name="brifewriteup" [(ngModel)]="company.brifewriteup" #brifewriteup="ngModel"></span>
+      </div>
+      <div class="form-group">
+        <span><label for="stockCode">Stock Code</label>
+        <input type="text" class="form-control" id="stockCode" name="stockCode" [(ngModel)]="company.stockCode" #stockCode="ngModel"></span>
+    </div>
+    <div class="form-group">
+      <span><label for="companyStatus">Company Status</label>
+      <select class="form-control" id="companyStatus" name="companyStatus" [(ngModel)]="company.companyStatus" #companyStatus="ngModel">
+        <option>0</option>
+        <option>1</option>
+      </select>
+    </span>
+  </div>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel" />
+            <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="add()" value="Submit"/>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+
+  <div class="content" role="main">
+    <table datatable class="table"  style="border:1px solid #f3f3f3">
+      <thead>
+        <tr>
+          <th>Company ID</th>
+          <th>Company Code</th>
+          <th>Company Name</th>
+          <th>Turnover($)</th>
+          <th>CEO</th>
+          <th>Board Of Directors</th>
+          <th>Listed in Stock Exchanges</th>
+          <th>Sector Name</th>
+          <th>Brief Writeup</th>
+          <th>Stock Code</th>
+          <th>Company Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cp of companies; let i = index" [attr.data-index]="i">
+          <td>{{cp.companyid}}</td>
+          <td>{{cp.companyCode}}</td>
+          <td>{{cp.companyName}}</td>
+          <td>{{cp.turnover}}</td>
+          <td>{{cp.ceo}}</td>
+          <td>{{cp.boardofdirectors}}</td>
+          <td>{{cp.listedinskex}}</td>
+          <td>{{cp.sectorName}}</td>
+          <td>{{cp.brifewriteup}}</td>
+          <td>{{cp.stockCode}}</td>
+          <td>{{cp.companyStatus}}</td>
+          <!-- <td><input class="btn btn-info" type="button" (click)="update()" value="Edit"/></td> -->
+          <td><input class="btn btn-info" type="button" value="Edit" data-toggle="modal" data-target="#update-btn" (click)="currentCompany(i)" />
+        </td>
+          <!--Edit Company start-->
+          <div class="modal fade" id="update-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form class="form-editexchange">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Update an exchange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <span><label for="companyID">Company ID</label>
+                        <input type="text" class="form-control" id="companyID" name="companyid" [(ngModel)]="companyForm.companyid" #ExchangeID="ngModel" readonly></span>
+                      </div>
+
+                      <div class="form-group">
+                        <span><label for="companyCode">Company Code</label>
+                        <input type="text" class="form-control" id="companyCode" name="companyCode" [(ngModel)]="companyForm.companyCode" #companyCode="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                        <span><label for="companyName">Comany Name</label>
+                        <input type="text" class="form-control" id="companyName" name="companyName" [(ngModel)]="companyForm.companyName" #companyName="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                        <span><label for="turnover">Turnover($)</label>
+                        <input type="text" class="form-control" id="turnover" name="turnover" [(ngModel)]="companyForm.turnover" #turnover="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                        <span><label for="ceo">CEO</label>
+                        <input type="text" class="form-control" id="ceo" name="ceo" [(ngModel)]="companyForm.ceo" #ceo="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                      <span><label for="boardofdirectors">Board Of Directors</label>
+                      <input type="text" class="form-control" id="boardofdirectors" name="boardofdirectors" [(ngModel)]="companyForm.boardofdirectors" #boardofdirectors="ngModel"></span>
+                  </div>
+                  <div class="form-group">
+                    <span><label for="listedinskex">Listed in Stock Exchange</label>
+                    <input type="text" class="form-control" id="listedinskex" name="listedinskex" [(ngModel)]="companyForm.listedinskex" #listedinskex="ngModel"></span>
+                </div>
+                <div class="form-group">
+                  <span><label for="sectorName">Sector Name</label>
+                  <input type="text" class="form-control" id="sectorName" name="sectorName" [(ngModel)]="companyForm.sectorName" #sectorName="ngModel"></span>
+              </div>
+              <div class="form-group">
+                <span><label for="brifewriteup">Brife Writeup</label>
+                <input type="text" class="form-control" id="brifewriteup" name="brifewriteup" [(ngModel)]="companyForm.brifewriteup" #brifewriteup="ngModel"></span>
+            </div>
+            <div class="form-group">
+              <span><label for="stockCode">Stock Code</label>
+              <input type="text" class="form-control" id="stockCode" name="stockCode" [(ngModel)]="companyForm.stockCode" #stockCode="ngModel"></span>
+          </div>
+          <div class="form-group">
+            <span><label for="companyStatus">Company Status</label>
+              <select class="form-control" id="companyStatus" name="companyStatus" [(ngModel)]="companyForm.companyStatus" #companyStatus="ngModel">
+                <option>N</option>
+                <option>Y</option>
+              </select>
+          </span>
+        </div>
+
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel"/>
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="update(i)" value="Submit"/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      <!--Edit Company End-->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
