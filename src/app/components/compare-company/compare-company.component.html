@@ -1,8 +1,5 @@
 
     <div class="big-main">
-        <div class="page-header" style="padding: 3%;">
-            <h1>Compare Company</h1>
-        </div>
         <div class="row">
             <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Company/Sector:</span>&nbsp;</div>
             <div class="col-md-3">
@@ -86,7 +83,7 @@
 
         <div class="row" style="padding-top: 2%;">
             <div class="col-md-3 col-md-offset-5">
-                <button type="button" class="btn btn-warning" style="width: 100%;">Generate Map</button>
+                <button (click)="getDatas()" type="button" class="btn btn-warning" style="width: 100%;">Generate Map</button>
             </div>
         </div>
 
@@ -96,12 +93,24 @@
               <fusioncharts
                 width="700"
                 height="400"
-                [type]="companySinglePriceType"
-                [dataSource]="companySinglePriceFusion"
+                [type]="firstPriceType"
+                [dataSource]="firstPriceFusion"
+              >
+              </fusioncharts>
+              <fusioncharts
+                width="700"
+                height="400"
+                [type]="secondPriceType"
+                [dataSource]="secondPriceFusion"
               >
               </fusioncharts>
             </div>
             <!-- <span>{{anyList.heroesUrl}}</span> -->
+            <div class="col-md-1">
+                <p>
+                    average: 
+                </p>
+            </div>
         </div>
 
         
