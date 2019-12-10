@@ -21,7 +21,7 @@ export class LoginService {
         public headerService: HeaderService
     ) { }
 
-    readonly loginURL = LocalURL.serverURL + 'smc/secure/login';
+    readonly loginURL = LocalURL.serverURL + 'login';
 
     // Observable<any> 定义返回类型
     public findUser(loginForm: Login): Observable<any> {
