@@ -18,7 +18,7 @@ export class ImportExcelComponent implements OnInit {
   public res: any;
   uploader: FileUploader = new FileUploader({
     // url: 'http://9.112.77.89:8080/import/data',
-    url: 'http://localhost:8080/import/data',
+    url: 'http://localhost:8084/admin/import/data',
     method: 'POST',
     itemAlias: 'file',
     autoUpload: false,
