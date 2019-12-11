@@ -16,7 +16,8 @@ import {
   ManageExchangesComponent,
   UserIpoComponent,
   CompareCompanyComponent,
-  CompareSectorsComponent,
+  ChangepwdComponent,
+  LogoutComponent,
   HomeDetailComponent,
   OtherComponent
 } from './components';
@@ -54,7 +55,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     ManageExchangesComponent,
     UserIpoComponent,
     CompareCompanyComponent,
-    CompareSectorsComponent,
+    ChangepwdComponent,
+    LogoutComponent,
     HomeDetailComponent,
     OtherComponent
   ],

@@ -11,7 +11,9 @@ import {
   ManageExchangesComponent,
   UserIpoComponent,
   CompareCompanyComponent,
-  CompareSectorsComponent,
+  LogoutComponent,
+  ChangepwdComponent,
+  // CompareSectorsComponent,
   OtherComponent
 } from './components';
 
@@ -27,10 +29,13 @@ const routes: Routes = [
     {path: 'manageExchanges', component: ManageExchangesComponent},
     {path: 'manageIPO', component: ManageIPOComponent},
     {path: 'IPOs', component: UserIpoComponent},
-    {path: 'compareCompany', component: CompareCompanyComponent},
-    {path: 'compareSectors', component: CompareSectorsComponent},
-    {path: 'other', component: OtherComponent}
+    {path: 'compare', component: CompareCompanyComponent},
+    // {path: 'compareSectors', component: CompareSectorsComponent},
+    {path: 'other', component: OtherComponent},
+    {path: 'changepwd', component: ChangepwdComponent},
+    {path: 'logout', component: LogoutComponent}
   ]},
+  
 ];
 
 @NgModule({
