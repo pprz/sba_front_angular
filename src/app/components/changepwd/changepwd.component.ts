@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Router } from '@angular/router'; // 路由传参用到
+import { LocalURL } from '../../config/global-config';
 
-const BSEURL = "http://localhost:8089";
+
+const BSEURL = LocalURL.serverURL + 'securityuser';
 
 @Component({
   selector: 'app-changepwd',
