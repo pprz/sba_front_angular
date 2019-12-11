@@ -4,13 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
 import { HandleErrorService } from '../../service/handleError.service';
 import { IPO } from './ipo';
+import { LocalURL } from '../../config/global-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManageIpoService {
-  readonly allIposUrl = 'http://localhost:8082/search/ipo';
-  readonly updateipoUrl = 'http://localhost:8081/ipo';
+
+  // readonly allIposUrl = 'http://localhost:8082/search/ipo';
+  readonly allIposUrl = LocalURL.serverURL + 'searchsector/search/ipo';
+
+  // readonly updateipoUrl = 'http://localhost:8081/ipo';
+  readonly updateipoUrl = LocalURL.serverURL + 'companyipo/admin/manage/ipo';
+
   constructor(
     private http: HttpClient,
     public handleErrorService: HandleErrorService

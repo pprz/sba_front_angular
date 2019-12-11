@@ -15,13 +15,14 @@ import {
   OtherComponent
 } from './components';
 
+
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'home', component: HomeComponent,
   children: [
-    {path: '', redirectTo: 'importExcel', pathMatch: 'full'},
+    // {path: '', redirectTo: '', pathMatch: 'full'},
     {path: 'importExcel', component: ImportExcelComponent},
     {path: 'manageCompanies', component: ManageCompaniesComponent},
     {path: 'manageExchanges', component: ManageExchangesComponent},

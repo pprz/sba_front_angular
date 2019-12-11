@@ -33,11 +33,11 @@ userMenus: TopMenu[] = [
 
 //  neo start
 getTabs() {
-  const user=localStorage.getItem('currUser')
-  if(user['usertype']==='ROLE_user'){
-    return this.userMenus
+  const role=localStorage.getItem('currUserRole')
+  if (role === 'ROLE_admin') {
+    return this.adminMenus;
   }
-  return this.adminMenus
+  return this.userMenus;
 }
 
 getCurrentUser() {
