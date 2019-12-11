@@ -16,7 +16,8 @@ import {
   ManageExchangesComponent,
   UserIpoComponent,
   CompareCompanyComponent,
-  CompareSectorsComponent,
+  ChangepwdComponent,
+  LogoutComponent,
   HomeDetailComponent,
   OtherComponent
 } from './components';
@@ -55,7 +56,8 @@ import { SearchPipe } from './search.pipe';
     ManageExchangesComponent,
     UserIpoComponent,
     CompareCompanyComponent,
-    CompareSectorsComponent,
+    ChangepwdComponent,
+    LogoutComponent,
     HomeDetailComponent,
     OtherComponent,
     SearchPipe

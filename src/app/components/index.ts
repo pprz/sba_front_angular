@@ -3,6 +3,8 @@ export * from './home';
 export * from './login';
 export * from './signup';
 export * from './compare-company';
+export * from './changepwd';
+export * from './logout';
 export * from './compare-sectors';
 export * from './import-excel';
 export * from './manage-companies';

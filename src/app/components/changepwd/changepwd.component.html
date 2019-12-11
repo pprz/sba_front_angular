@@ -1,0 +1,49 @@
+<div class="big-main" style="padding-top: 2%;">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Old password: </span>&nbsp;</div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <input [(ngModel)]="oldpwd" type="password" class="form-control" name="" placeholder="Old password">
+                    <span class="input-group-addon">
+                        <span class=" 	glyphicon glyphicon-lock">
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">New password: </span>&nbsp;</div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <input [(ngModel)]="newpwd" type="password" class="form-control" name="" placeholder="New Password">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock">
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Confirm new password: </span>&nbsp;</div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <input id="conformPWD" [(ngModel)]="confirm_newpwd" type="password" class="form-control" name="" placeholder="Confirm New password">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-eye-open" >
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top: 2%;">
+    <div class="col-md-3 col-md-offset-5">
+        <button (click)="submitChangePwdRequest()" type="button" class="btn btn-warning" style="width: 100%;">Submit</button>
+    </div>
+</div>
