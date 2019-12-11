@@ -4,6 +4,7 @@ import { Company } from '../../config/company';
 import { IpoDetails } from '../../config/company';
 import { CompanyIPO } from '../../config/company';
 
+declare let laydate;
 @Component({
   selector: 'app-manage-companies',
   templateUrl: './manage-companies.component.html',
@@ -21,6 +22,11 @@ export class ManageCompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.getCompanies();
+    laydate.render({
+      elem: '#openDateTime',
+      type: 'datetime',
+      theme: '#4DC6FD'
+    });
 }
 
 getCompanies() {

@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/theme/default/laydate.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/laydate.js"
+            ]
           },
           "configurations": {
             "production": {
