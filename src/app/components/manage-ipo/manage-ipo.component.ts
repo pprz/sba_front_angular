@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IPO} from './ipo';
 import { ManageIpoService } from './manage-ipo.service';
-
+declare let laydate;
 @Component({
   selector: 'app-manage-ipo',
   templateUrl: './manage-ipo.component.html',
@@ -15,6 +15,11 @@ export class ManageIPOComponent implements OnInit {
 
   ngOnInit() {
     this.getIpos();
+      laydate.render({
+      elem: '#opendatetime',
+      type: 'datetime',
+      theme: '#4DC6FD'
+    });
   }
   getIpos() {
     this.manageipoService.getIPOs()

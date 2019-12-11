@@ -9,7 +9,7 @@ const SECONDARYURL_SECONDCHART = "/search/comparison/companyAnd/";
 
 const COMPANYURL = BSEURL+SECONDARYURL_FIRSTCHART;
 const SECTORURL = BSEURL+SECONDARYURL_SECONDCHART;
-
+declare let laydate;
 @Component({
   selector: 'app-compare-company',
   templateUrl: './compare-company.component.html',
@@ -98,6 +98,16 @@ export class CompareCompanyComponent implements OnInit {
   } // end of constructor
 
     ngOnInit() {
+    laydate.render({
+      elem: '#startTime',
+      type: 'datetime',
+      theme: '#4DC6FD'
+    });
+    laydate.render({
+        elem: '#endTime',
+        type: 'datetime',
+        theme: '#4DC6FD'
+      });
     }
 
     getDatas() {
