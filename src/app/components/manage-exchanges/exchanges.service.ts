@@ -67,10 +67,10 @@ export class ExchangesService {
     console.log('updateexchangesUrl', this.exchangesUrl);
     console.log('Updateexchange', Updateexchange);
     return this.http.put(this.exchangesUrl, Updateexchange)
-            .pipe(
-                retry(1), // retry a failed request up to 1 times
-                catchError(this.handleErrorService.handleError)
-            );
+      .pipe(
+          retry(1), // retry a failed request up to 1 times
+          catchError(this.handleErrorService.handleError)
+      );
   }
 
 

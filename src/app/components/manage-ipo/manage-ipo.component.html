@@ -1,1 +1,84 @@
-<p>manage-ipo works!</p>
+<!--All IPOs Table Start-->
+<div class="content" role="main">
+  <table datatable class="table"  style="border:1px solid #f3f3f3">
+    <thead>
+      <tr>
+        <!-- <th>Index</th> -->
+        <th>IPO ID</th>
+        <th>Company Name</th>
+        <th>Stock Exchange</th>
+        <th>Price Per Share</th>
+        <th>Total Number of Shares</th>
+        <th>Open Date Time</th>
+        <th>Remarks</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ipo of ipos; let i = index" [attr.data-index]="i">
+        <!-- <td>{{i}}</td> -->
+        <td>{{ipo.ipoid}}</td>
+        <td>{{ipo.companyName}}</td>
+        <td>{{ipo.stockExchange}}</td>
+        <td>{{ipo.pricePerShare}}</td>
+        <td>{{ipo.totalNumber}}</td>
+        <td>{{ipo.openDateTime}}</td>
+        <td>{{ipo.ipoRemarks}}</td>
+        <td><input class="btn btn-info" type="button" value="Edit" data-toggle="modal" data-target="#update-btn-ipo" (click)="currentIpo(i)" />
+        </td>
+        <!--Edit IPO start-->
+        <div class="modal fade" id="update-btn-ipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form class="form-editipo">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelipo">Update an IPO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <span><label for="IPOID">Exchange ID</label>
+                        <input type="text" class="form-control" id="IPOID" name="exchangeid" [(ngModel)]="ipoForm.ipoid" #IPOID="ngModel" readonly></span>
+                      </div>
+                    <div class="form-group">
+                      <span><label for="CompanyName">Stock Exchange</label>
+                      <input type="text" class="form-control" id="CompanyName" name="CompanyName" [(ngModel)]="ipoForm.companyName" #CompanyName="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                        <span><label for="stockExchange">Stock Exchange</label>
+                        <input type="text" class="form-control" id="updatestockExchange" name="updatestockExchange" [(ngModel)]="ipoForm.stockExchange" #updatestockExchange="ngModel"></span>
+                      </div>
+                    <div class="form-group">
+                        <span><label for="pricepershare">Price Per Share</label>
+                        <input type="text" class="form-control" id="pricepershare" name="pricepershare" [(ngModel)]="ipoForm.pricePerShare" #pricepershare="ngModel"></span>
+                      </div>
+                    <div class="form-group">
+                        <span><label for="totalshares">Total Number of Shares</label>
+                          <input type="text" class="form-control" id="totalshares" name="totalshares" [(ngModel)]="ipoForm.totalNumber" #totalshares="ngModel"></span>
+                    </div>
+                    <div class="form-group">
+                      <span><label for="opendatetime">Open Date Time</label>
+                      <input type="text" class="form-control" id="opendatetime" name="opendatetime" [(ngModel)]="ipoForm.openDateTime" #opendatetime="ngModel"></span>
+                      </div>
+                    <div class="form-group">
+                        <span><label for="updateremarks">Remarks</label>
+                        <input type="text" class="form-control" id="updateremarks" name="updateremarks" [(ngModel)]="ipoForm.ipoRemarks" #updateremarks="ngModel"></span>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel"/>
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateipo(i)" value="Submit"/>          
+                </div>
+              </div>
+            </div>
+          </form>
+        </div> 
+      <!--Edit IPO End-->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--All IPOs Table End-->
+

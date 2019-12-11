@@ -1,0 +1,27 @@
+.content {
+  display: flex;
+  margin: 32px auto;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-add {
+  margin-left: 74%; 
+  margin-top: 3%;
+}
+.form-addexchange{
+  width: 50%;
+  height: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+}
+.form-editexchange {
+  width: 50%;
+  height: 50%;
+  margin-left: 25%;
+}
+
+.modal-dialog {
+  pointer-events: auto;
+}
