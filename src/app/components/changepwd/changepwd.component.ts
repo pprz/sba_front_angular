@@ -20,7 +20,7 @@ export class ChangepwdComponent implements OnInit {
 
   submitChangePwdRequest(){
     console.log("token: ", "shazi "+ localStorage.getItem('JWT-Token'));
-    this.jsonData = JSON.stringify(localStorage.getItem('JWT-Token'));// 转成JSON格式
+    console.log("username",localStorage.getItem('currUser')[0]);
   }
   
   validateOldPWD(){
