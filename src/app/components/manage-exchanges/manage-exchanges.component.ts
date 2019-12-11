@@ -61,7 +61,7 @@ export class ManageExchangesComponent implements OnInit {
   }
 
   currentExchange(i: number) {
-    this.exchangesService.getCurrentExchange(this.exchanges[i].stockExchange)
+    this.exchangesService.getCurrentExchange(this.exchanges[i].exchangeid)
     .subscribe(
       res => {
         if (res.status === 200) {
@@ -84,7 +84,7 @@ export class ManageExchangesComponent implements OnInit {
       res => {
         if (res.status === 200) {
           console.log('response', res);
-          console.log('slice', this.exchanges.slice(this.exchangeForm.exchangeid));
+          // console.log('slice', this.exchanges.slice(this.exchangeForm.exchangeid));
           // this.exchangeForm.splice(this.exchangeForm.exchangeid , 1, this.exchangeForm);
           alert (res.msg);
           this.getExchanges();
