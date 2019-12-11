@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
+import { LocalURL } from '../../config/global-config';
 
-const BSEURL = "http://localhost:8081";
+
+const BSEURL = LocalURL.serverURL + 'searchsector';
 const SECONDARYURL_FIRSTCHART = "/search/comparison/";
 const SECONDARYURL_SECONDCHART = "/search/comparison/companyAnd/";
 

@@ -65,7 +65,8 @@ export class LoginComponent implements OnInit {
     this.globalService.userName = data.username;
 
     localStorage.setItem('JWT-Token', data.jwtToken);
-    localStorage.setItem('currUser', data);
+    localStorage.setItem('currUserRole', data.usertype);
+    localStorage.setItem('currUserName', data.username);
     this.authresponse.name = data.username;
     this.authresponse.role = data.usertype;
     this.authresponse.token = data.jwtToken;
@@ -75,11 +76,11 @@ export class LoginComponent implements OnInit {
     if ('ROLE_admin' === data.usertype) {
       console.log(data.usertype);
       console.log(data.id);
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/home/importExcel');
     } else if ('ROLE_user' === data.usertype) {
       console.log(data.usertype);
       console.log(data.id);
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/home/IPOs');
     } else {
       console.log(data.usertype);
       console.log(data.id);

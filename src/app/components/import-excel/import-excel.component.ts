@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FileUploader, FileItem } from 'ng2-file-upload';
+import {LocalURL} from '../../config/global-config';
 @Component({
   selector: 'app-import-excel',
   templateUrl: './import-excel.component.html',
@@ -16,14 +17,23 @@ export class ImportExcelComponent implements OnInit {
   public fromDate: string;
   public toDate: string;
   public res: any;
+
+  readonly uploadURL = LocalURL.serverURL + 'importfile/admin/import/data';
+
   uploader: FileUploader = new FileUploader({
     // url: 'http://9.112.77.89:8080/import/data',
-    url: 'http://localhost:8084/admin/import/data',
+    // url: 'http://localhost:8084/admin/import/data',
+    // Authorization: 'Shazi ' + localStorage.getItem('JWT-Token')
+    url: this.uploadURL,
     method: 'POST',
     itemAlias: 'file',
     autoUpload: false,
     removeAfterUpload: true,
-    allowedFileType: ['xlsx', 'xls']
+    allowedFileType: ['xlsx', 'xls'],
+    headers: [
+      {name: 'Authorization', value: `Shazi ${localStorage.getItem('JWT-Token')}`}
+
+    ]
   });
 
   constructor() {

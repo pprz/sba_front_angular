@@ -20,8 +20,10 @@ import { HandleErrorService } from '../../service/handleError.service';
 })
 export class ExchangesService {
   // readonly exchangesUrl = LocalURL.serverURL + 'exchange';
-  readonly allexchangesUrl = 'http://localhost:8081/search/exchange';
-  readonly exchangesUrl = 'http://localhost:8082/exchange';
+  // readonly allexchangesUrl = 'http://localhost:8081/search/exchange';
+  // readonly exchangesUrl = 'http://localhost:8082/exchange';
+  readonly allexchangesUrl = LocalURL.serverURL + 'searchsector/search/exchange';
+  readonly exchangesUrl = LocalURL.serverURL + 'exchange/admin/manage/exchange';
   // private exchangesUrl = 'api/exchange';  // URL to web api
   constructor(
     private http: HttpClient,
@@ -54,9 +56,9 @@ export class ExchangesService {
             );
   }
 
-  getCurrentExchange(stockExchange: string): Observable<any> {
-    console.log('getCurrentExchange URL', `${this.allexchangesUrl}/${stockExchange}`);
-    return this.http.get<any>(`${this.allexchangesUrl}/${stockExchange}`)
+  getCurrentExchange(Exchangeid: number): Observable<any> {
+    console.log('getCurrentExchange URL', `${this.allexchangesUrl}/id/${Exchangeid}`);
+    return this.http.get<any>(`${this.allexchangesUrl}/id/${Exchangeid}`)
       .pipe(
         retry(1), // retry a failed request up to 1 times
         catchError(this.handleErrorService.handleError)

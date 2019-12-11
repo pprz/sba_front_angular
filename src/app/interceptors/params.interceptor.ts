@@ -11,6 +11,7 @@ export class ParamInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // const user: Authresponse = this.service.getCurrentUser();
     // const token = user.token;
+    console.log('请求拦截!!!!!!!');
     const modifiedReq = req.clone({
       setHeaders: {
         // token: token.toString()
