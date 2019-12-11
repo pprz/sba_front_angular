@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
+import { Router } from '@angular/router'; // 路由传参用到
 
 const BSEURL = "http://localhost:8089";
 
@@ -14,19 +15,16 @@ export class ChangepwdComponent implements OnInit {
   newpwd: string;
   jsonData: Object;
   confirm_newpwd: string;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,  private router: Router) { 
     
   }
 
   submitChangePwdRequest(){
     console.log("token: ", "shazi "+ localStorage.getItem('JWT-Token'));
-    console.log("username",localStorage.getItem('currUser')[0]);
-  }
-  
-  validateOldPWD(){
+    console.log("username",localStorage.getItem('currUserName'));
     let headers = { headers: new HttpHeaders({ "Authorization": "shazi "+ localStorage.getItem('JWT-Token')})}
     this.http.post(BSEURL + "/settings" 
-      ,{"username":"KK","password":this.oldpwd,"newpassword":this.newpwd},
+      ,{"username":localStorage.getItem('currUserName'),"password":this.oldpwd,"newpassword":this.newpwd},
         headers )
       .subscribe(res=>{
         this.getFirstData(res)});
@@ -34,6 +32,9 @@ export class ChangepwdComponent implements OnInit {
 
   getFirstData(returnedObj: any){
     alert(returnedObj.msg);
+    if(returnedObj.status==200){
+      this.router.navigateByUrl('/login');
+    }
   }
 
   ngOnInit() {
