@@ -14,6 +14,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <h3>Company Information</h3>
             <div class="modal-body">
               <div class="form-group">
                   <span><label for="companyCode">Company Code</label>
@@ -59,18 +60,45 @@
       </select>
     </span>
   </div>
+  <h3>IPO Information</h3>
+<!-- start for IPO Add-->
+  <div class="form-group">
+    <span><label for="stockExchange">Stock Exchange</label>
+    <input type="text" class="form-control" id="stockExchange" name="stockExchange" [(ngModel)]="ipodetails.stockExchange" #stockCode="ngModel"></span>
+</div>
+<div class="form-group">
+  <span><label for="pricePerShare">Price PerShare</label>
+  <input type="text" class="form-control" id="pricePerShare" name="pricePerShare" [(ngModel)]="ipodetails.pricePerShare" #stockCode="ngModel"></span>
+</div>
+<div class="form-group">
+  <span><label for="totalNumber">Total Number</label>
+  <input type="text" class="form-control" id="totalNumber" name="totalNumber" [(ngModel)]="ipodetails.totalNumber" #stockCode="ngModel"></span>
+</div>
+<div class="form-group">
+  <span><label for="openDateTime">Open Date Time</label>
+  <input type="text" class="form-control" id="openDateTime" name="openDateTime" [(ngModel)]="ipodetails.openDateTime" #stockCode="ngModel"></span>
+</div>
+<div class="form-group">
+  <span><label for="ipoRemarks">Ipo Remarks</label>
+  <input type="text" class="form-control" id="ipoRemarks" name="ipoRemarks" [(ngModel)]="ipodetails.IpoRemarks" #stockCode="ngModel"></span>
+</div>
+<!-- end for IPO Add -->
           </div>
           <div class="modal-footer">
             <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel" />
-            <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="add()" value="Submit"/>
+            <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="addall()" value="Submit"/>
           </div>
         </div>
       </div>
     </form>
     </div>
 
+
   <div class="content" role="main">
-    <table datatable class="table"  style="border:1px solid #f3f3f3">
+      <label>Company name:
+          <input type="text" class = "advancedSearchTextbox" placeholder="search" [(ngModel)]="search" id="listSearch">
+      </label>
+      <table datatable class="table"  style="border:1px solid #f3f3f3">
       <thead>
         <tr>
           <th>Company ID</th>
@@ -88,7 +116,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cp of companies; let i = index" [attr.data-index]="i">
+        <tr *ngFor="let cp of companies | searchPipe:'companyName':search; let i = index" [attr.data-index]="i">
           <td>{{cp.companyid}}</td>
           <td>{{cp.companyCode}}</td>
           <td>{{cp.companyName}}</td>
