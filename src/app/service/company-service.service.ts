@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Company } from '../config/company';
+import { CompanyIPO } from '../config/company';
 import { LocalURL } from '../config/global-config';
 import { HandleErrorService } from './handle-error.service';
 import { ApiResponse } from '../config/api.response';
@@ -12,10 +13,10 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class CompanyServiceService {
-  readonly allcompaniesUrl = 'http://localhost:8088/search/company';
-  readonly newcompanyUrl = 'http://localhost:8088/company/newCompany';
-  readonly updatecompanyUrl = 'http://localhost:8088/company/updateCompany';
-  readonly currentcompanyUrl = 'http://localhost:8088/search/company';
+  readonly allcompaniesUrl = 'http://9.112.80.151:8081/search/company';
+  readonly companyUrl = 'http://9.112.80.151:8082/company';
+  //readonly updatecompanyUrl = 'http://localhost:8088/company';
+  readonly currentcompanyUrl = 'http://9.112.80.151:8081/search/company_id';
 
   constructor(
     private http: HttpClient,
@@ -40,13 +41,21 @@ export class CompanyServiceService {
   }
   addCompany(company: Company): Observable<any> {
     console.log('addCompany() done!');
-    console.log('addCompanysUrl', this.newcompanyUrl);
+    console.log('addCompanysUrl', this.companyUrl);
     console.log('AddCompany', company);
-    return this.http.post<any>(this.newcompanyUrl, company)
+    return this.http.post<any>(this.companyUrl, company)
             .pipe(
                 retry(1), // retry a failed request up to 1 times
                 tap(_ => this.log('add new company(tap)')),
                 catchError(this.handleError<any>('addCompany'))
+            );
+  }
+  addCompanyIpo(companyipo: CompanyIPO): Observable<any> {
+    return this.http.post<any>(this.companyUrl, companyipo)
+            .pipe(
+                retry(1), // retry a failed request up to 1 times
+                tap(_ => this.log('add new companyipo(tap)')),
+                catchError(this.handleError<any>('addCompanyIpo'))
             );
   }
   getCurrentCompany(companyid: number ): Observable<any> {
@@ -61,9 +70,9 @@ export class CompanyServiceService {
 
   updateCompany(updatedCompany: Company): Observable<any> {
     console.log('updateCompany() done!');
-    console.log('updatecompanyUrl', this.updatecompanyUrl);
+    console.log('companyUrl', this.companyUrl);
     console.log('updateCompany', updatedCompany);
-    return this.http.put(this.updatecompanyUrl, updatedCompany)
+    return this.http.put(this.companyUrl, updatedCompany)
             .pipe(
                 retry(1), // retry a failed request up to 1 times
                 catchError(this.handleErrorService.handleError)

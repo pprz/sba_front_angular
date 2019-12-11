@@ -37,6 +37,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Powercharts, FusionTheme);
 // Fusion chart End
 // File upload start
 import { FileUploadModule } from 'ng2-file-upload';
+import { SearchPipe } from './search.pipe';
 // File upload end
 // 模拟数据服务器 start
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -58,7 +59,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     ChangepwdComponent,
     LogoutComponent,
     HomeDetailComponent,
-    OtherComponent
+    OtherComponent,
+    SearchPipe
   ],
 
   imports: [
