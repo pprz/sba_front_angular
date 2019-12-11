@@ -40,8 +40,12 @@ getCompanies() {
         alert (res.msg);
       }
     },
-    error => this.errMsg = error
-    );
+    // error => this.errMsg = error
+    error => {
+      this.errMsg = error;
+      alert(error);
+    }
+  );
 }
 add() {
   console.log('this.company', this.company);
@@ -62,7 +66,10 @@ add() {
         this.company = new Company();
       }
     },
-    error => this.errMsg = error
+    error => {
+      this.errMsg = error;
+      alert(error);
+    }
   );
 }
 addall() {
@@ -86,7 +93,10 @@ addall() {
         this.company = new Company();
       }
     },
-    error => this.errMsg = error
+    error => {
+      this.errMsg = error;
+      alert(error);
+    }
   );
 }
 update() {
@@ -109,7 +119,10 @@ update() {
         this.companyForm = new Company();
       }
     },
-    error => this.errMsg = error
+    error => {
+      this.errMsg = error;
+      alert(error);
+    }
   );
 }
 currentCompany(i: number) {
@@ -123,7 +136,10 @@ currentCompany(i: number) {
         alert (res.msg);
       }
     },
-    error => this.errMsg = error
+    error => {
+      this.errMsg = error;
+      alert(error);
+    }
   );
 }
 

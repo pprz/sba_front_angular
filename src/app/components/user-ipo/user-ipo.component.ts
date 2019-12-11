@@ -27,7 +27,11 @@ export class UserIpoComponent implements OnInit {
           alert (res.msg);
         }
       },
-      error => this.errMsg = error
+      // error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 
@@ -42,7 +46,10 @@ export class UserIpoComponent implements OnInit {
           alert (res.msg);
         }
       },
-      error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 }

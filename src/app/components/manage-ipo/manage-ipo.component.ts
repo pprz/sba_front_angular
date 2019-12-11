@@ -15,7 +15,7 @@ export class ManageIPOComponent implements OnInit {
 
   ngOnInit() {
     this.getIpos();
-      laydate.render({
+    laydate.render({
       elem: '#opendatetime',
       type: 'datetime',
       theme: '#4DC6FD'
@@ -32,7 +32,11 @@ export class ManageIPOComponent implements OnInit {
           alert (res.msg);
         }
       },
-      error => this.errMsg = error
+      // error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 
@@ -47,7 +51,10 @@ export class ManageIPOComponent implements OnInit {
           alert (res.msg);
         }
       },
-      error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 
@@ -66,7 +73,10 @@ export class ManageIPOComponent implements OnInit {
           this.ipoForm = new IPO();
         }
       },
-      error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 }

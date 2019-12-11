@@ -29,7 +29,11 @@ export class ManageExchangesComponent implements OnInit {
           alert (res.msg);
         }
       },
-      error => this.errMsg = error
+      // error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
       // exchanges => {
       //   console.log('response', exchanges);
       //   this.exchanges = exchanges;
@@ -56,7 +60,10 @@ export class ManageExchangesComponent implements OnInit {
           this.exchange = new Exchange();
         }
       },
-      error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 
@@ -71,7 +78,10 @@ export class ManageExchangesComponent implements OnInit {
           alert (res.msg);
         }
       },
-      error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 
@@ -95,7 +105,10 @@ export class ManageExchangesComponent implements OnInit {
           this.exchangeForm = new Exchange();
         }
       },
-      error => this.errMsg = error
+      error => {
+        this.errMsg = error;
+        alert(error);
+      }
     );
   }
 }
