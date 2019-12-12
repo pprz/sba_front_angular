@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { HttpClient  } from '@angular/common/http';
 import { LocalURL } from '../../config/global-config';
-import { Time } from '@angular/common';
 
 
-// const BSEURL = LocalURL.serverURL + 'searchsector';
-const BSEURL = "http://localhost:8081"
+const BSEURL = LocalURL.serverURL + 'searchsector';
+// const BSEURL = "http://localhost:8081"
 const SECONDARYURL_SECTOR = "/search/comparison/sector/";
 
 const SECTORURL = BSEURL+SECONDARYURL_SECTOR;
