@@ -13,7 +13,7 @@ import {
   CompareCompanyComponent,
   LogoutComponent,
   ChangepwdComponent,
-  // CompareSectorsComponent,
+  CompareSectorsComponent,
   // OtherComponent
 } from './components';
 
@@ -31,7 +31,7 @@ const routes: Routes = [
     {path: 'manageIPO', component: ManageIPOComponent},
     {path: 'IPOs', component: UserIpoComponent},
     {path: 'compareCompany', component: CompareCompanyComponent},
-    // {path: 'compareSectors', component: CompareSectorsComponent},
+    {path: 'compareSectors', component: CompareSectorsComponent},
     // {path: 'other', component: OtherComponent},
     {path: 'changepwd', component: ChangepwdComponent},
     {path: 'logout', component: LogoutComponent}

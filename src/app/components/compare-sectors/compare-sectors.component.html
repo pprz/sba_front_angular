@@ -1,1 +1,161 @@
-<p>compare-sectors works!</p>
+<div class="big-main" style="padding-top: 2%;">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Stock Exchange:</span>&nbsp;&nbsp;</div>
+        <div class="col-md-3">
+            <select class="form-control" id="exchange" (change)="changeBseOrNse($event.target.value);">
+                <option value="bse">BSE</option>
+                <option value="nse">NSE</option>
+            </select>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 1%;">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Sector name:</span>&nbsp;&nbsp;</div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <input [(ngModel)]="SECNAME_FIRST" type="text" class="form-control" name="" placeholder="Sector name">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-folder-open">
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- second form -->
+    <div id="secondForm" style="display: none;">            
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3"><hr/></div>
+            <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Stock Exchange:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3">
+                <select class="form-control" (change)="changeSecondBseOrNse($event.target.value);">
+                    <option value="bse">BSE</option>
+                    <option value="nse">NSE</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 1%;">
+            
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Sector Name:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input [(ngModel)]="SECNAME_SECOND" type="text" class="form-control" name="" placeholder="Sector Name">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-folder-open">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Second finished -->
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Specific time range: </span>&nbsp;</div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <select class="form-control" (change)="changeTime($event.target.value);">
+                    <option value="indicate">Indicate desired date range</option>
+                    <option value="select">Select period</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="indicateDiv"  style="display: none;">
+        <div class="row" >
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">From period:</span></div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="datetime-local" class="form-control" [(ngModel)]="startTime" name="" id="startTime" placeholder="YYYY-mm-dd hh:mm:ss">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">To period:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="datetime" class="form-control" [(ngModel)]="endTime" name="" id="endTime" placeholder="YYYY-mm-dd hh:mm:ss">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="row" id="selectTimeDiv" style="display: none;">
+        <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select period: </span>&nbsp;</div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <select class="form-control" (change)="selectperiod($event.target.value);">
+                    <option ></option>
+                    <option value="last3">Last 3 days</option>
+                    <option value="last5">Last 5 days</option>
+                    <option value="last9">Last 10 days</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9">
+            <button id="addbutton" (click)="add()" type="button" class="btn btn-danger" style="width: 25%;">Add</button>
+            <button id="removebutton" (click)="remove()" type="button" class="btn btn-danger" style="width: 25%; display: none;">Remove</button>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 2%;">
+        <div class="col-md-3 col-md-offset-5">
+            <button (click)="getCharts()" type="button" class="btn btn-warning" style="width: 100%;">Generate Chart</button>
+        </div>
+    </div>
+    <div id="chartRow" class="row">
+        <div class="col-md-1" >
+            <div id="mergeButton" style="display: none; float: right;">
+                <button (click)="mergeCharts()">merge as single chart </button>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div id="comCharts">
+                <div id="comchart1" style="display: none;">
+                    <fusioncharts 
+                        width="700"
+                        height="400"
+                        type="line"
+                        [dataSource]="sectorChart1"
+                    >
+                    </fusioncharts>
+                </div>
+                <div id="comchart2" style="display: none;">
+                    <fusioncharts 
+                        width="700"
+                        height="400"
+                        type="line"
+                        [dataSource]="sectorChart2"
+                    >
+                    </fusioncharts>
+                </div>
+                <div id="mergeChart" style="display: none;">
+                    <fusioncharts
+                    width="700"
+                    height="400"
+                    type="msline"
+                    [dataSource]="mergeChart"
+                    >
+                    </fusioncharts>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

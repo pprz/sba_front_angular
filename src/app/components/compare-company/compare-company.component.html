@@ -5,8 +5,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <select class="form-control" (change)="changeCompanyorSector($event.target.value);">
-                        <option value="company">company</option>
-                        <option value="sector">sector</option>
+                        <option value="company">Company</option>
+                        <option value="sector">Sector</option>
                     </select>
                 </div>
             </div>
@@ -22,11 +22,11 @@
             </div>
         </div>
         <div class="row" style="padding-top: 1%;">
-            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Company/Sector Name:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Company Code:</span>&nbsp;&nbsp;</div>
             <div class="col-md-3">
                 <div class="form-group">
                     <div class="input-group">
-                        <input [(ngModel)]="companyOrSector_name" type="text" class="form-control" name="" placeholder="Company/Sector name">
+                        <input [(ngModel)]="COMCODE_FIRST" type="text" class="form-control" name="" placeholder="Company Code">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-folder-open">
                             </span>
@@ -37,20 +37,9 @@
         </div>
 
         <!-- second form -->
-        <div id="secondForm" style="display: none;">
+        <div id="secondForm" style="display: none;">            
             <div class="row">
-                <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Company/Sector:</span>&nbsp;</div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-control" id="secondcompanysector" (change)="changeSecondCompanyorSector($event.target.value);">
-                            <option value="company">company</option>
-                            <option value="sector">sector</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
+                <div class="col-md-6 col-md-offset-3"><hr/></div>
                 <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Select Stock Exchange:</span>&nbsp;&nbsp;</div>
                 <div class="col-md-3">
                     <select class="form-control" (change)="changeSecondBseOrNse($event.target.value);">
@@ -60,11 +49,12 @@
                 </div>
             </div>
             <div class="row" style="padding-top: 1%;">
-                <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Company/Sector Name:</span>&nbsp;&nbsp;</div>
+                
+                <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Company Code:</span>&nbsp;&nbsp;</div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <div class="input-group">
-                            <input [(ngModel)]="companyOrSector_second_name" type="text" class="form-control" name="" placeholder="Company/Sector name">
+                            <input [(ngModel)]="COMCODE_SECOND" type="text" class="form-control" name="" placeholder="Company Code">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-folder-open">
                                 </span>
@@ -76,41 +66,56 @@
         </div>
         <!-- Second finished -->
 
-        <div class="row" >
-            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">From Peroid:</span></div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="datetime" class="form-control" [(ngModel)]="startTime" name="" id="startTime" placeholder="YYYY-mm-dd hh:mm:ss">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar">
-                            </span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">To Peroid:</span>&nbsp;&nbsp;</div>
+            <div class="col-md-3 col-md-offset-3"><span style="font-size: large; float: center;">Specific time range: </span>&nbsp;</div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <div class="input-group">
-                        <input type="datetime" class="form-control" [(ngModel)]="endTime" name="" id="endTime" placeholder="YYYY-mm-dd hh:mm:ss">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar">
-                            </span>
-                        </span>
-                    </div>
+                    <select class="form-control" (change)="changeTime($event.target.value);">
+                        <option value="indicate">Indicate desired date range</option>
+                        <option value="select">Select period</option>
+                    </select>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div id="indicateDiv"  style="display: none;">
+            <div class="row" >
+                <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">From period:</span></div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="datetime-local" class="form-control" [(ngModel)]="startTime" name="" id="startTime" placeholder="YYYY-mm-dd hh:mm:ss">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">To period:</span>&nbsp;&nbsp;</div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="datetime" class="form-control" [(ngModel)]="endTime" name="" id="endTime" placeholder="YYYY-mm-dd hh:mm:ss">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row" id="selectTimeDiv" style="display: none;">
             <div class="col-md-3 col-md-offset-3"><span style="font-size:large; float: center;">Specify Periodicity&nbsp;(days):</span>&nbsp;&nbsp;</div>
             <div class="col-md-3">
                 
                 
-                <input type="range" class="custom-range" min="1" max="120" step="1" id="customRange3" [(ngModel)]="rangeValue" style="width: 100%;">
+                <input type="range" class="custom-range" min="3" max="7" step="2" id="customRange3" [(ngModel)]="rangeValue" style="width: 100%;">
                 <div style="float: left;">
                     last&nbsp;<span id="rangevalue" style="font-style: oblique; font-weight: 700;">{{rangeValue}}</span> days
                 </div>
@@ -125,52 +130,74 @@
 
         <div class="row" style="padding-top: 2%;">
             <div class="col-md-3 col-md-offset-5">
-                <button (click)="getDatas()" type="button" class="btn btn-warning" style="width: 100%;">Generate Map</button>
+                <button (click)="getCharts()" type="button" class="btn btn-warning" style="width: 100%;">Generate Chart</button>
             </div>
         </div>
 
         
-        <div id="chartRow" class="row" style="display: none;">
-            <div class="col-md-8 col-md-offset-2" style="height: 400px;">
-              <div id="chart1">
-                    <fusioncharts
-                    width="700"
-                    height="400"
-                    [type]="firstChartType"
-                    [dataSource]="firstChart"
-                >
-                
-                </fusioncharts>
-              </div>
-              <div id="chart2">
-                <fusioncharts
-                    width="700"
-                    height="400"
-                    [type]="secondChartType"
-                    [dataSource]="secondChart"
-                >
-                </fusioncharts>
-              </div>
-              <div id="chart3">
-                <fusioncharts 
-                    width="700"
-                    height="400"
-                    [type]="mergedChartType"
-                    [dataSource]="mergedChart"
-                >
-                </fusioncharts>
-              </div>
-            </div>
-            <!-- <span>{{anyList.heroesUrl}}</span> -->
+        <div id="chartRow" class="row">
             <div class="col-md-1" >
-                <p>
-                    average: {{average}}
-                </p>
-                <div id="mergeButton" style="display: none;">
-                    <button (click)="mergeChartsToOneChart()">merge as single chart </button>
+                <div id="mergeButton" style="display: none; float: right;">
+                    <button (click)="mergeCompanyData()">merge as single chart </button>
                 </div>
             </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div id="secCharts" style="display:none">
+                    <div id="secchart1" style="display: none;">
+                            <fusioncharts
+                            width="700"
+                            height="400"
+                            type="msline"
+                            [dataSource]="sectorChart1"
+                        >
+                        
+                        </fusioncharts>
+                    </div>
+                    
+                    <div id="secchart2" style="display: none;">
+                        <fusioncharts
+                            width="700"
+                            height="400"
+                            type="msline"
+                            [dataSource]="sectorChart2"
+                        >
+                        </fusioncharts>
+                    </div>
+                </div>
+                <div id="comCharts">
+                    <div id="comchart1" style="display: none;">
+                        <fusioncharts 
+                            width="700"
+                            height="400"
+                            type="line"
+                            [dataSource]="companyChart1"
+                        >
+                        </fusioncharts>
+                    </div>
+                    <div id="comchart2" style="display: none;">
+                        <fusioncharts 
+                            width="700"
+                            height="400"
+                            type="line"
+                            [dataSource]="companyChart2"
+                        >
+                        </fusioncharts>
+                    </div>
+                    <div id="mergeChart" style="display: none;">
+                        <fusioncharts
+                        width="700"
+                        height="400"
+                        type="msline"
+                        [dataSource]="mergeChart"
+                        >
+                        
+                        </fusioncharts>
+                    </div>
+                </div>
+            </div>
+            <!-- <span>{{anyList.heroesUrl}}</span> -->
         </div>
+       
     </div>
 
    
