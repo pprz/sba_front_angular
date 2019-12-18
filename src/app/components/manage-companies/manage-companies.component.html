@@ -113,6 +113,7 @@
           <th>Stock Code</th>
           <th>Company Status</th>
           <th>Action</th>
+          <th>DelAction</th>
         </tr>
       </thead>
       <tbody>
@@ -130,6 +131,7 @@
           <td>{{cp.companyStatus}}</td>
           <!-- <td><input class="btn btn-info" type="button" (click)="update()" value="Edit"/></td> -->
           <td><input class="btn btn-info" type="button" value="Edit" data-toggle="modal" data-target="#update-btn" (click)="currentCompany(i)" />
+          <td><input class="btn btn-danger" type="button" value="Delete" data-toggle="modal" data-target="#update-del" (click)="currentCompany(i)" />
         </td>
           <!--Edit Company start-->
           <div class="modal fade" id="update-btn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -196,13 +198,49 @@
                 </div>
                 <div class="modal-footer">
                   <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel"/>
-                  <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="update(i)" value="Submit"/>
+                  <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="update()" value="Submit"/>
                 </div>
               </div>
             </div>
           </form>
         </div>
       <!--Edit Company End-->
+        <!--Delete Company start-->
+        <div class="modal fade" id="update-del" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <form class="form-editexchange">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel2">Delete Company</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                      <span><label for="companyID">Company ID</label>
+                      <input type="text" class="form-control" id="companyID" name="companyid" [(ngModel)]="companyForm.companyid" #companyID="ngModel" readonly></span>
+                    </div>
+
+                    <div class="form-group">
+                      <span><label for="companyCode">Company Code</label>
+                      <input type="text" class="form-control" id="companyCode" name="companyCode" [(ngModel)]="companyForm.companyCode" #companyCode="ngModel"></span>
+                  </div>
+                  <div class="form-group">
+                      <span><label for="companyName">Comany Name</label>
+                      <input type="text" class="form-control" id="companyName" name="companyName" [(ngModel)]="companyForm.companyName" #companyName="ngModel"></span>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value= "Cancel"/>
+                <input type="button" class="btn btn-primary" data-dismiss="modal" (click)="del()" value="Delete"/>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    <!--Delete Company End-->
         </tr>
       </tbody>
     </table>

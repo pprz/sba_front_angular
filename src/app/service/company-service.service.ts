@@ -13,10 +13,13 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class CompanyServiceService {
-  readonly allcompaniesUrl = 'http://9.112.80.151:8081/search/company';
-  readonly companyUrl = 'http://9.112.80.151:8082/company';
+  // readonly allcompaniesUrl = 'http://9.112.80.151:8081/search/company';
+  readonly allcompaniesUrl = 'http://localhost:8081/search/company';
+  // readonly companyUrl = 'http://localhost:8082/company';
+  readonly companyUrl = 'http://localhost:8083/admin/manage/company';
   //readonly updatecompanyUrl = 'http://localhost:8088/company';
-  readonly currentcompanyUrl = 'http://9.112.80.151:8081/search/company_id';
+  readonly currentcompanyUrl = 'http://localhost:8081/search/company_id';
+  readonly delcompanyUrl = 'http://localhost:8083/admin/manage/company/delcompany';
 
   constructor(
     private http: HttpClient,
@@ -77,6 +80,14 @@ export class CompanyServiceService {
                 retry(1), // retry a failed request up to 1 times
                 catchError(this.handleErrorService.handleError)
             );
+  }
+  delCompany(company: Company ): Observable<any> {
+    return this.http.post<any>(this.delcompanyUrl, company)
+      .pipe(
+        retry(1), // retry a failed request up to 1 times
+        tap(_ => this.log('delete current company(tap)')),
+        catchError(this.handleError<any>('delCompany'))
+      );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

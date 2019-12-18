@@ -15,6 +15,7 @@ export class ManageCompaniesComponent implements OnInit {
   company = new Company();
   companyipo = new CompanyIPO();
   companyForm = new Company();
+  delForm = new Company();
   ipodetails = new IpoDetails();
   public search:any = '';
   constructor(private companyservice: CompanyServiceService ) { }
@@ -115,6 +116,29 @@ currentCompany(i: number) {
         this.companyForm = res.data;
       } else {
         alert (res.msg);
+      }
+    },
+    error => this.errMsg = error
+  );
+}
+
+del(i: number) {
+  console.log('this.company', this.company);
+  this.companyservice.delCompany(this.companyForm)
+  .subscribe(
+    res => {
+      if (res.status === 200) {
+        console.log('response', res);
+        // this.companys = res.data;
+        // this.companys.push();
+        this.companies.splice(i, 1);
+        alert (res.msg);
+        this.getCompanies();
+        this.company = new Company();
+      } else {
+        alert (res.msg);
+        this.getCompanies();
+        this.company = new Company();
       }
     },
     error => this.errMsg = error
